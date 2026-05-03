@@ -82,7 +82,6 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .info-row:last-child{border-bottom:none;}
 .info-row .lbl{font-size:13px;color:var(--text2);}
 .info-row .val{font-size:13px;font-weight:600;}
-/* SCOUTING PANEL */
 .scout-empty{text-align:center;padding:30px 20px;color:var(--text3);font-size:13px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);}
 .scout-summary{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px;}
 .scout-summary h3{font-size:14px;font-weight:600;color:var(--accent2);margin-bottom:10px;}
@@ -118,37 +117,42 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .sub-tab{flex:1;padding:8px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-size:12px;font-weight:600;text-align:center;cursor:pointer;transition:all 0.2s;}
 .sub-tab.active{background:var(--accent);border-color:var(--accent);color:white;}
 /* ALLIANCE */
-.alliance-container{padding:14px;}
-.alliance-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
-.alliance-col{background:var(--card);border-radius:var(--radius);overflow:hidden;}
-.alliance-col-header{padding:12px 14px;border-bottom:1px solid var(--border);}
-.alliance-col-header h3{font-size:14px;font-weight:600;}
-.alliance-col-header.pick h3{color:var(--green);}
-.alliance-col-header.avoid h3{color:var(--red);}
-.alliance-item{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:pointer;border-bottom:1px solid var(--border);}
-.alliance-item:last-child{border-bottom:none;}
-.alliance-item:active{background:var(--card2);}
-.alliance-num{font-size:13px;font-weight:700;color:var(--accent2);min-width:38px;}
-.alliance-name{font-size:11px;color:var(--text2);flex:1;line-height:1.3;}
-.alliance-remove{background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;padding:0 2px;}
-.rank-badge{font-size:10px;font-weight:700;color:var(--text3);min-width:16px;}
-.alliance-all-title{font-size:13px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:8px;}
+.alliance-wrap{padding:14px;}
+.alliance-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;}
+.alliance-section-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.alliance-section-header h3{font-size:14px;font-weight:600;}
+.alliance-section-header.pick1 h3{color:var(--green);}
+.alliance-section-header.pick2 h3{color:var(--accent2);}
+.alliance-section-header.avoid h3{color:var(--red);}
+.drag-list{min-height:40px;padding:4px 0;}
+.drag-item{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:grab;border-bottom:1px solid var(--border);transition:background 0.15s;user-select:none;-webkit-user-select:none;}
+.drag-item:last-child{border-bottom:none;}
+.drag-item.dragging{opacity:0.4;}
+.drag-item.drag-over{background:var(--card2);border-top:2px solid var(--accent);}
+.drag-handle{color:var(--text3);font-size:16px;cursor:grab;flex-shrink:0;}
+.drag-rank{font-size:11px;font-weight:700;color:var(--text3);min-width:18px;}
+.drag-num{font-size:14px;font-weight:700;color:var(--accent2);min-width:46px;}
+.drag-name{font-size:12px;color:var(--text2);flex:1;min-width:0;}
+.drag-comment{font-size:11px;color:var(--text3);font-style:italic;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.drag-actions{display:flex;gap:4px;flex-shrink:0;}
+.drag-view{background:rgba(59,130,246,0.15);border:none;border-radius:5px;padding:4px 8px;color:var(--accent2);font-size:11px;cursor:pointer;}
+.drag-remove{background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;padding:0 2px;}
+.empty-list{padding:14px;font-size:12px;color:var(--text3);text-align:center;}
+.all-teams-section{margin-top:4px;}
+.all-teams-title{font-size:13px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:8px;}
 .all-team-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
 .all-team-row .ath-num{font-size:14px;font-weight:700;color:var(--accent2);min-width:50px;}
-.all-team-row .ath-name{font-size:13px;color:var(--text2);flex:1;}
-.all-team-actions{display:flex;gap:6px;}
-.add-pick{background:rgba(16,185,129,0.15);border:none;border-radius:6px;padding:6px 10px;color:var(--green);font-size:11px;font-weight:600;cursor:pointer;}
-.add-avoid{background:rgba(239,68,68,0.15);border:none;border-radius:6px;padding:6px 10px;color:var(--red);font-size:11px;font-weight:600;cursor:pointer;}
-/* SCANNER PAGE */
+.all-team-row .ath-name{font-size:12px;color:var(--text2);flex:1;}
+.all-team-row .ath-comment{font-size:11px;color:var(--text3);font-style:italic;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.all-team-actions{display:flex;gap:4px;flex-shrink:0;}
+.add-p1{background:rgba(16,185,129,0.15);border:none;border-radius:5px;padding:5px 7px;color:var(--green);font-size:10px;font-weight:700;cursor:pointer;}
+.add-p2{background:rgba(96,165,250,0.15);border:none;border-radius:5px;padding:5px 7px;color:var(--accent2);font-size:10px;font-weight:700;cursor:pointer;}
+.add-av{background:rgba(239,68,68,0.15);border:none;border-radius:5px;padding:5px 7px;color:var(--red);font-size:10px;font-weight:700;cursor:pointer;}
+/* IMPORT */
 .scanner-wrap{padding:14px;}
-.scan-box{background:var(--card);border:2px dashed var(--border2);border-radius:var(--radius);padding:20px;text-align:center;margin-bottom:14px;}
-.scan-box p{font-size:13px;color:var(--text2);margin-bottom:12px;}
-.scan-btn{background:var(--purple);border:none;border-radius:var(--radius-sm);padding:12px 24px;color:white;font-size:15px;font-weight:600;cursor:pointer;width:100%;}
-.scan-btn:active{opacity:0.8;}
-#scannerVideo{width:100%;border-radius:var(--radius-sm);display:none;margin-bottom:10px;max-height:280px;object-fit:cover;}
 .manual-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px;}
 .manual-box h3{font-size:14px;font-weight:600;margin-bottom:10px;color:var(--text2);}
-.manual-box textarea{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px;color:var(--text);font-size:13px;outline:none;resize:vertical;min-height:70px;font-family:monospace;}
+.manual-box textarea{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px;color:var(--text);font-size:13px;outline:none;resize:vertical;min-height:120px;font-family:monospace;}
 .manual-box textarea:focus{border-color:var(--accent);}
 .import-btn{background:var(--accent);border:none;border-radius:var(--radius-sm);padding:10px;color:white;font-size:14px;font-weight:600;cursor:pointer;width:100%;margin-top:8px;}
 .scan-result{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:var(--radius-sm);padding:12px;margin-bottom:10px;font-size:13px;color:#6ee7b7;display:none;}
@@ -162,7 +166,6 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .scan-team{font-size:14px;font-weight:700;color:var(--accent2);min-width:50px;}
 .scan-meta{font-size:12px;color:var(--text2);flex:1;}
 .scan-del{background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;}
-/* SCOUTING OVERVIEW PAGE */
 .scout-overview{padding:14px;}
 .scout-team-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:10px;cursor:pointer;}
 .scout-team-card:active{background:var(--card2);}
@@ -182,7 +185,6 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 </head>
 <body>
 
-<!-- FILM PAGE -->
 <div id="page-film" class="page active">
   <div class="film-header">
     <h1>Film Review</h1>
@@ -198,51 +200,40 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
   <div id="filmContent"><div class="empty" style="padding-top:40px">Enter an event code above to load teams.</div></div>
 </div>
 
-<!-- CHECKLIST PAGE -->
 <div id="page-checklist" class="page">
   <div class="page-header"><h1>Checklists</h1><p>Pre-event &amp; pre-match prep</p></div>
   <div class="sub-tabs">
-    <div class="sub-tab active" id="tab-event" onclick="showChecklist('event',this)">Pre-Event</div>
-    <div class="sub-tab" id="tab-match" onclick="showChecklist('match',this)">Pre-Match</div>
+    <div class="sub-tab active" onclick="showChecklist('event',this)">Pre-Event</div>
+    <div class="sub-tab" onclick="showChecklist('match',this)">Pre-Match</div>
   </div>
   <div id="checklist-event"></div>
   <div id="checklist-match" style="display:none"></div>
 </div>
 
-<!-- ALLIANCE PAGE -->
 <div id="page-alliance" class="page">
   <div class="page-header"><h1>Alliance Selection</h1><p id="allianceEventLabel">Load an event in Film Review first</p></div>
-  <div id="allianceContent"><div class="empty" style="padding-top:30px">No event loaded.</div></div>
+  <div id="allianceContent"></div>
 </div>
 
-<!-- SCANNER PAGE -->
 <div id="page-scanner" class="page">
-  <div class="page-header"><h1>QR Scanner</h1><p>Scan QRScout data from scouts</p></div>
+  <div class="page-header"><h1>Import Scout Data</h1><p>Paste QRScout entries from scouts</p></div>
   <div class="scanner-wrap">
-    <div class="scan-box">
-      <canvas id="snapCanvas" style="display:none;width:100%;border-radius:8px;margin-bottom:10px;"></canvas>
-      <p id="scanPrompt" style="margin-bottom:10px;">Take a photo of the QRScout QR code</p>
-      <input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none;" onchange="handlePhoto(this)"/>
-      <button class="scan-btn" onclick="document.getElementById('photoInput').click()">&#128247; Take Photo of QR Code</button>
+    <div class="manual-box">
+      <h3>Paste QRScout data here</h3>
+      <textarea id="manualInput" placeholder="Paste one entry at a time, or multiple entries each on a new line..."></textarea>
+      <button class="import-btn" onclick="importManual()">&#8595; Import</button>
     </div>
     <div id="scanResult" class="scan-result"></div>
     <div id="scanError" class="scan-error"></div>
-    <div class="manual-box">
-      <h3>Or paste raw QRScout data manually</h3>
-      <textarea id="manualInput" placeholder="Paste tab-separated QRScout data here..."></textarea>
-      <button class="import-btn" onclick="importManual()">Import Data</button>
-    </div>
     <div class="recent-scans" id="recentScans"></div>
   </div>
 </div>
 
-<!-- SCOUTING OVERVIEW PAGE -->
 <div id="page-scouting" class="page">
   <div class="page-header"><h1>Scouting Data</h1><p>All imported scout reports</p></div>
-  <div id="scoutingContent"><div class="empty" style="padding-top:30px">No scouting data yet. Use the Scanner tab to import QR codes.</div></div>
+  <div id="scoutingContent"><div class="empty" style="padding-top:30px">No scouting data yet.</div></div>
 </div>
 
-<!-- TEAM DETAIL OVERLAY -->
 <div id="teamDetail">
   <div class="detail-header">
     <button class="back-btn" onclick="closeDetail()">&#8592; Back</button>
@@ -251,31 +242,24 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
       <p id="detailSubtitle"></p>
     </div>
   </div>
-  <div class="detail-body" id="detailBody">
-    <div class="loading"><div class="spinner"></div>Loading...</div>
-  </div>
+  <div class="detail-body" id="detailBody"></div>
 </div>
 
 <nav>
   <button class="nav-btn active" onclick="showPage('film',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/><path d="M8 11h8M8 15h5"/></svg>
-    Film
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/><path d="M8 11h8M8 15h5"/></svg>Film
   </button>
   <button class="nav-btn" onclick="showPage('checklist',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-    Checklist
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Checklist
   </button>
   <button class="nav-btn" onclick="showPage('alliance',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 3.13a4 4 0 010 7.75"/><path d="M21 21v-2a4 4 0 00-3-3.87"/></svg>
-    Alliance
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 3.13a4 4 0 010 7.75"/><path d="M21 21v-2a4 4 0 00-3-3.87"/></svg>Alliance
   </button>
   <button class="nav-btn" onclick="showPage('scanner',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/><rect x="7" y="7" width="4" height="4"/><rect x="13" y="7" width="4" height="4"/><rect x="7" y="13" width="4" height="4"/><path d="M13 13h4v4"/></svg>
-    Scanner
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/><rect x="7" y="7" width="4" height="4"/><rect x="13" y="7" width="4" height="4"/><rect x="7" y="13" width="4" height="4"/><path d="M13 13h4v4"/></svg>Import
   </button>
   <button class="nav-btn" onclick="showPage('scouting',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-    Scouting
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>Scouting
   </button>
 </nav>
 
@@ -283,21 +267,24 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 <script>
 const TBA_KEY='sBdj6c4Yga6cd3nQTNKa6siKfkVedQKgizLVflrPSFEqmxUgyFe9jto4jjyo2cz8';
 const TBA='https://www.thebluealliance.com/api/v3';
-
-// QRScout 2026 column order from scouting.wlhsfrc.com/2026
-// scouter,matchNumber,robot,teamNumber,afuel8,afuel,aclimb,Tfuel,shift,a1fuel,a1role,a2fuel,a2role,efuel,eclimb,disabled,aside,Arank,sCon,Drskill,Dskill,askill,comm
 const QR_COLS=['scouter','matchNumber','robot','teamNumber','afuel8','afuel','aclimb','Tfuel','shift','a1fuel','a1role','a2fuel','a2role','efuel','eclimb','disabled','aside','Arank','sCon','Drskill','Dskill','askill','comm'];
 
 let currentEvent=localStorage.getItem('frc_event')||'';
 let eventTeams=JSON.parse(localStorage.getItem('frc_teams')||'[]');
 let eventStatuses=JSON.parse(localStorage.getItem('frc_statuses')||'{}');
-let picklist=JSON.parse(localStorage.getItem('frc_picklist')||'[]');
+let pick1list=JSON.parse(localStorage.getItem('frc_pick1')||'[]');
+let pick2list=JSON.parse(localStorage.getItem('frc_pick2')||'[]');
 let avoidlist=JSON.parse(localStorage.getItem('frc_avoidlist')||'[]');
 let scoutData=JSON.parse(localStorage.getItem('frc_scoutdata')||'[]');
 
-let scannerActive=false;
-let scanStream=null;
-let scanAnimFrame=null;
+// migrate old picklist key
+if(!pick1list.length){const old=JSON.parse(localStorage.getItem('frc_picklist')||'[]');if(old.length){pick1list=old;saveLists();}}
+
+function saveLists(){
+  localStorage.setItem('frc_pick1',JSON.stringify(pick1list));
+  localStorage.setItem('frc_pick2',JSON.stringify(pick2list));
+  localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));
+}
 
 const DEFAULT_EVENT=['Bumpers (both sets)','Battery x3 minimum','Battery charger','Tool bag (allen keys, screwdrivers, pliers)','Laptop + charger','Driver station cable','Spare motors (Falcon, NEO)','Gearbox spare parts','Zip ties + velcro','Electrical spare (breakers, wire)','Pit banner + table cloth','Team shirts / buttons','Safety glasses x5','Radio + OM5P','Pneumatics kit (if applicable)','3D printer filament spares','Competition manual printout','Team registration docs'];
 const DEFAULT_MATCH=['Robot powered on','Battery fully charged + secured','Bumpers on and tight','All mechanisms move freely','Radio light solid green','Driver station connected','Autonomous selected','Alliance partners confirmed','Tablet / scouting ready','Strategy review done'];
@@ -313,26 +300,19 @@ function showPage(name,btn){
   if(name==='alliance')renderAlliance();
   if(name==='scouting')renderScoutingOverview();
   if(name==='scanner')renderRecentScans();
-  if(name!=='scanner')stopScanner();
 }
 
-// ── LOGOS ──
 function teamLogoHTML(teamKey,teamNum,size=48){
-  const id='logo_'+teamKey.replace(/[^a-z0-9]/g,'_')+'_'+size;
   const yr=new Date().getFullYear();
-  return `<div class="team-logo-box" style="width:${size}px;height:${size}px;border-radius:${size>50?'10px':'8px'}">
-    <img id="${id}" src="https://www.thebluealliance.com/avatar/${yr}/${teamKey}.png"
-      onerror="tryNextLogo(this,'${teamKey}',${teamNum},${size},1)"
-      style="width:${size}px;height:${size}px;object-fit:contain;display:block"/></div>`;
+  return `<div class="team-logo-box" style="width:${size}px;height:${size}px;border-radius:${size>50?'10px':'8px'}"><img src="https://www.thebluealliance.com/avatar/${yr}/${teamKey}.png" onerror="tryNextLogo(this,'${teamKey}',${teamNum},${size},1)" style="width:${size}px;height:${size}px;object-fit:contain;display:block"/></div>`;
 }
 function tryNextLogo(img,teamKey,teamNum,size,step){
   const yr=new Date().getFullYear();
   const fb=[`https://www.thebluealliance.com/avatar/${yr-1}/${teamKey}.png`,`https://frcavatars.com/avatar/${teamKey}`,null];
-  if(step<fb.length&&fb[step-1]!==null){img.onerror=()=>tryNextLogo(img,teamKey,teamNum,size,step+1);img.src=fb[step-1];}
+  if(step<fb.length&&fb[step-1]){img.onerror=()=>tryNextLogo(img,teamKey,teamNum,size,step+1);img.src=fb[step-1];}
   else{img.parentNode.innerHTML=`<div class="team-logo-fallback" style="font-size:${size>50?14:11}px;color:var(--accent2);font-weight:700;width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center">${teamNum}</div>`;}
 }
 
-// ── EVENT LOADING ──
 async function loadEvent(){
   const code=document.getElementById('eventCodeInput').value.trim().toLowerCase();
   if(!code)return;
@@ -340,14 +320,14 @@ async function loadEvent(){
   document.getElementById('eventBadge').style.display='none';
   try{
     const [teams,statuses,eventInfo]=await Promise.all([tbaFetch('/event/'+code+'/teams'),tbaFetch('/event/'+code+'/teams/statuses'),tbaFetch('/event/'+code)]);
-    if(!Array.isArray(teams)||teams.length===0){document.getElementById('filmContent').innerHTML='<div class="error-msg">No teams found for "'+code+'". Check the code and try again.</div>';return;}
+    if(!Array.isArray(teams)||teams.length===0){document.getElementById('filmContent').innerHTML='<div class="error-msg">No teams found for "'+code+'".</div>';return;}
     currentEvent=code;eventTeams=teams.sort((a,b)=>a.team_number-b.team_number);eventStatuses=statuses||{};
     localStorage.setItem('frc_event',currentEvent);localStorage.setItem('frc_teams',JSON.stringify(eventTeams));localStorage.setItem('frc_statuses',JSON.stringify(eventStatuses));
     const eName=eventInfo.name||code;
     document.getElementById('eventBadgeText').textContent=eName;document.getElementById('eventBadge').style.display='flex';
     document.getElementById('allianceEventLabel').textContent=eName;
     renderTeamGrid();
-  }catch(e){document.getElementById('filmContent').innerHTML='<div class="error-msg">Failed to load event. Check connection or event code.</div>';}
+  }catch(e){document.getElementById('filmContent').innerHTML='<div class="error-msg">Failed to load event.</div>';}
 }
 
 function renderTeamGrid(){
@@ -372,13 +352,12 @@ function renderTeamGrid(){
 
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/'/g,"&#39;").replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-// ── TEAM DETAIL ──
 async function openTeam(teamKey,num,name){
   const el=document.getElementById('teamDetail');
   el.style.display='block';el.scrollTop=0;
   document.getElementById('detailTitle').textContent='Team '+num;
   document.getElementById('detailSubtitle').textContent=name;
-  document.getElementById('detailBody').innerHTML='<div class="loading"><div class="spinner"></div>Loading team data...</div>';
+  document.getElementById('detailBody').innerHTML='<div class="loading"><div class="spinner"></div>Loading...</div>';
   try{
     const reqs=[tbaFetch('/team/'+teamKey),tbaFetch('/team/'+teamKey+'/awards/2025')];
     if(currentEvent){reqs.push(tbaFetch('/team/'+teamKey+'/event/'+currentEvent+'/matches'));reqs.push(tbaFetch('/event/'+currentEvent+'/rankings'));reqs.push(tbaFetch('/event/'+currentEvent+'/oprs'));}
@@ -391,18 +370,18 @@ async function openTeam(teamKey,num,name){
     if(rankings&&rankings.rankings){const r=rankings.rankings.find(x=>x.team_key===teamKey);if(r){rank=r.rank;record=r.record;}}
     let oprVal=null,dprVal=null,ccwmVal=null;
     if(oprs&&oprs.oprs){oprVal=oprs.oprs[teamKey];dprVal=oprs.dprs?.[teamKey];ccwmVal=oprs.ccwms?.[teamKey];}
-    const levelOrder={qm:0,ef:1,qf:2,sf:3,f:4};
-    const sorted=(Array.isArray(matches)?matches:[]).sort((a,b)=>{const lo=(levelOrder[a.comp_level]??0)-(levelOrder[b.comp_level]??0);if(lo!==0)return lo;const so=(a.set_number||0)-(b.set_number||0);if(so!==0)return so;return(a.match_number||0)-(b.match_number||0);});
-    let latestVideoKey=null,latestMatchKey=null;
-    for(let i=sorted.length-1;i>=0;i--){const m=sorted[i];if(m.videos){const yt=m.videos.find(v=>v.type==='youtube');if(yt){latestVideoKey=yt.key;latestMatchKey=m.key;break;}}}
-    renderTeamDetail(info,sorted,teamKey,num,rank,record,oprVal,dprVal,ccwmVal,latestVideoKey,latestMatchKey,awards);
+    const lo={qm:0,ef:1,qf:2,sf:3,f:4};
+    const sorted=(Array.isArray(matches)?matches:[]).sort((a,b)=>{const d=(lo[a.comp_level]??0)-(lo[b.comp_level]??0);if(d)return d;const s=(a.set_number||0)-(b.set_number||0);if(s)return s;return(a.match_number||0)-(b.match_number||0);});
+    let vKey=null,vMatchKey=null;
+    for(let i=sorted.length-1;i>=0;i--){const m=sorted[i];if(m.videos){const yt=m.videos.find(v=>v.type==='youtube');if(yt){vKey=yt.key;vMatchKey=m.key;break;}}}
+    renderTeamDetail(info,sorted,teamKey,num,rank,record,oprVal,dprVal,ccwmVal,vKey,vMatchKey,awards);
   }catch(e){document.getElementById('detailBody').innerHTML='<div class="error-msg">Failed to load team data.</div>';}
 }
 
 function renderTeamDetail(info,matches,teamKey,num,rank,record,opr,dpr,ccwm,videoKey,videoMatchKey,awards){
   const wins=record?.wins??'—',losses=record?.losses??'—',ties=record?.ties??'—';
   const winRate=(record&&(record.wins+record.losses+record.ties)>0)?((record.wins/(record.wins+record.losses+record.ties))*100).toFixed(1)+'%':'—';
-  const videoHTML=videoKey&&videoMatchKey?buildVideoThumb(videoKey,videoMatchKey):`<div class="video-container"><div class="video-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>No match video yet</div></div>`;
+  const videoHTML=videoKey?buildVideoThumb(videoKey):`<div class="video-container"><div class="video-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>No match video yet</div></div>`;
   let matchRows='';
   for(const m of matches){
     const isRed=m.alliances?.red?.team_keys?.includes(teamKey);
@@ -413,7 +392,7 @@ function renderTeamDetail(info,matches,teamKey,num,rank,record,opr,dpr,ccwm,vide
     const lbl=m.comp_level==='qm'?'Q'+m.match_number:m.comp_level.toUpperCase()+m.set_number+'M'+m.match_number;
     const sc=(my>=0&&op>=0)?`${my} - ${op}`:'TBD';
     const yt=m.videos&&m.videos.find(v=>v.type==='youtube');
-    matchRows+=`<div class="match-row" onclick="${yt?`playVideo('${yt.key}','${m.key}',this)`:''}" style="${!yt?'opacity:0.6;cursor:default':''}">
+    matchRows+=`<div class="match-row" onclick="${yt?`playVideo('${yt.key}',this)`:''}" style="${!yt?'opacity:0.6;cursor:default':''}">
       <span class="match-key">${lbl}</span><span class="match-score">${sc}</span>
       <span class="match-result ${rc}">${result}</span>
       ${yt?'<span class="play-icon">&#9654;</span>':'<span style="font-size:10px;color:var(--text3)">no vid</span>'}
@@ -424,14 +403,10 @@ function renderTeamDetail(info,matches,teamKey,num,rank,record,opr,dpr,ccwm,vide
   document.getElementById('detailBody').innerHTML=`
     <div class="detail-tabs">
       <div class="detail-tab active" onclick="switchDetailTab('tba',this)">TBA Stats</div>
-      <div class="detail-tab" onclick="switchDetailTab('scout',this)">Scout Data ${teamScouts.length>0?`<span style="background:var(--purple);color:white;border-radius:10px;padding:1px 6px;font-size:10px;margin-left:4px">${teamScouts.length}</span>`:''}
-      </div>
+      <div class="detail-tab" onclick="switchDetailTab('scout',this)">Scout Data${teamScouts.length>0?` <span style="background:var(--purple);color:white;border-radius:10px;padding:1px 6px;font-size:10px">${teamScouts.length}</span>`:''}</div>
     </div>
     <div id="dtab-tba">
-      <div class="team-hero">
-        ${teamLogoHTML(teamKey,info.team_number,60)}
-        <div><div class="hero-num">${info.team_number}</div><div class="hero-name">${esc(info.nickname)}</div><div class="hero-loc">${[info.city,info.state_prov,info.country].filter(Boolean).join(', ')}</div></div>
-      </div>
+      <div class="team-hero">${teamLogoHTML(teamKey,info.team_number,60)}<div><div class="hero-num">${info.team_number}</div><div class="hero-name">${esc(info.nickname)}</div><div class="hero-loc">${[info.city,info.state_prov,info.country].filter(Boolean).join(', ')}</div></div></div>
       ${videoHTML}
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-label">Rank</div><div class="stat-value">${rank?'#'+rank:'—'}</div></div>
@@ -447,7 +422,7 @@ function renderTeamDetail(info,matches,teamKey,num,rank,record,opr,dpr,ccwm,vide
         <div class="info-row"><span class="lbl">Website</span><span class="val">${info.website?`<a href="${info.website}" style="color:var(--accent2)">${info.website.replace(/https?:\/\//,'').slice(0,28)}</a>`:'—'}</span></div>
       </div>
       <div class="section-title">Match History</div>
-      <div class="match-list">${matchRows||'<div class="empty">No matches played yet.</div>'}</div>
+      <div class="match-list">${matchRows||'<div class="empty">No matches yet.</div>'}</div>
     </div>
     <div id="dtab-scout" style="display:none">${scoutHTML}</div>`;
 }
@@ -459,181 +434,202 @@ function switchDetailTab(tab,btn){
   document.getElementById('dtab-scout').style.display=tab==='scout'?'block':'none';
 }
 
-function buildVideoThumb(ytKey,matchKey){
+function buildVideoThumb(ytKey){
   const thumb=`https://img.youtube.com/vi/${ytKey}/hqdefault.jpg`;
   const ytUrl=`https://www.youtube.com/watch?v=${ytKey}&autoplay=1`;
   return `<div class="video-container" id="videoBox" style="cursor:pointer;position:relative;" onclick="window.open('${ytUrl}','_blank')">
     <img src="${thumb}" style="width:100%;height:100%;object-fit:cover;display:block;"/>
     <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);">
-      <div style="width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="9,7 19,12 9,17"/></svg>
-      </div>
+      <div style="width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="9,7 19,12 9,17"/></svg></div>
     </div>
     <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);padding:7px 12px;font-size:12px;color:white;">Tap to open in YouTube</div>
   </div>`;
 }
 
-function playVideo(ytKey,matchKey,row){
+function playVideo(ytKey,row){
   document.querySelectorAll('.match-row').forEach(r=>r.classList.remove('active'));
   row.classList.add('active');
   const box=document.getElementById('videoBox');
-  if(box){
-    const ytUrl=`https://www.youtube.com/watch?v=${ytKey}&autoplay=1`;
-    box.onclick=()=>window.open(ytUrl,'_blank');
-    box.querySelector('img').src=`https://img.youtube.com/vi/${ytKey}/hqdefault.jpg`;
-    box.scrollIntoView({behavior:'smooth',block:'start'});
-  }
+  if(box){box.onclick=()=>window.open(`https://www.youtube.com/watch?v=${ytKey}&autoplay=1`,'_blank');box.querySelector('img').src=`https://img.youtube.com/vi/${ytKey}/hqdefault.jpg`;box.scrollIntoView({behavior:'smooth',block:'start'});}
 }
-
 function closeDetail(){document.getElementById('teamDetail').style.display='none';}
 
-// ── SCOUT DATA PARSING ──
+// ── ALLIANCE ──
+// Drag state
+let dragSrc=null,dragList=null;
+
+function getLastComment(teamKey){
+  const tn=eventTeams.find(t=>t.key===teamKey)?.team_number;
+  if(!tn)return'';
+  const entries=scoutData.filter(x=>String(x.teamNumber)===String(tn));
+  if(!entries.length)return'';
+  const last=[...entries].sort((a,b)=>b.matchNumber-a.matchNumber)[0];
+  return last.comm||'';
+}
+
+function renderAllianceList(listId,items,headerClass,title){
+  const comment_snippets=items.map(tk=>getLastComment(tk));
+  let rows=items.map((tk,i)=>{
+    const t=eventTeams.find(x=>x.key===tk)||{key:tk,team_number:tk,nickname:''};
+    const comm=comment_snippets[i];
+    return `<div class="drag-item" draggable="true"
+      ondragstart="onDragStart(event,'${listId}',${i})"
+      ondragover="onDragOver(event)"
+      ondragenter="onDragEnter(event)"
+      ondragleave="onDragLeave(event)"
+      ondrop="onDrop(event,'${listId}',${i})"
+      ondragend="onDragEnd(event)">
+      <span class="drag-handle">&#8597;</span>
+      <span class="drag-rank">${i+1}</span>
+      <span class="drag-num">${t.team_number}</span>
+      <span class="drag-name">${esc(t.nickname||'')}</span>
+      ${comm?`<span class="drag-comment" title="${esc(comm)}">${esc(comm)}</span>`:''}
+      <div class="drag-actions">
+        <button class="drag-view" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')">View</button>
+        <button class="drag-remove" onclick="removeFromList('${listId}','${tk}')">&#10005;</button>
+      </div>
+    </div>`;
+  }).join('');
+  return `<div class="alliance-section">
+    <div class="alliance-section-header ${headerClass}"><h3>${title}</h3><span style="font-size:11px;color:var(--text3)">${items.length} teams</span></div>
+    <div class="drag-list" id="draglist-${listId}" ondragover="event.preventDefault()" ondrop="onDropEmpty(event,'${listId}')">${rows||'<div class="empty-list">None added</div>'}</div>
+  </div>`;
+}
+
+function renderAlliance(){
+  if(!eventTeams.length){document.getElementById('allianceContent').innerHTML='<div class="empty" style="padding-top:30px">No event loaded. Load an event in Film Review first.</div>';return;}
+  let allTeams=eventTeams.map(t=>{
+    const inP1=pick1list.includes(t.key),inP2=pick2list.includes(t.key),inAv=avoidlist.includes(t.key);
+    const comm=getLastComment(t.key);
+    return `<div class="all-team-row">
+      <span class="ath-num">${t.team_number}</span>
+      <span class="ath-name">${esc(t.nickname)}</span>
+      ${comm?`<span class="ath-comment" title="${esc(comm)}">${esc(comm)}</span>`:''}
+      <div class="all-team-actions">
+        <button class="add-p1" onclick="addToList('pick1','${t.key}')" ${inP1?'disabled style="opacity:0.3"':''}>P1</button>
+        <button class="add-p2" onclick="addToList('pick2','${t.key}')" ${inP2?'disabled style="opacity:0.3"':''}>P2</button>
+        <button class="add-av" onclick="addToList('avoid','${t.key}')" ${inAv?'disabled style="opacity:0.3"':''}>Avoid</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('allianceContent').innerHTML=`<div class="alliance-wrap">
+    ${renderAllianceList('pick1',pick1list,'pick1','&#9733; Round 1 Picks')}
+    ${renderAllianceList('pick2',pick2list,'pick2','&#9734; Round 2 Picks')}
+    ${renderAllianceList('avoid',avoidlist,'avoid','&#9888; Avoid')}
+    <div class="all-teams-section">
+      <div class="all-teams-title">All Teams</div>
+      ${allTeams}
+    </div>
+  </div>`;
+}
+
+function addToList(list,teamKey){
+  if(list==='pick1'&&!pick1list.includes(teamKey))pick1list.push(teamKey);
+  else if(list==='pick2'&&!pick2list.includes(teamKey))pick2list.push(teamKey);
+  else if(list==='avoid'&&!avoidlist.includes(teamKey))avoidlist.push(teamKey);
+  saveLists();renderAlliance();
+}
+function removeFromList(list,teamKey){
+  if(list==='pick1')pick1list=pick1list.filter(k=>k!==teamKey);
+  else if(list==='pick2')pick2list=pick2list.filter(k=>k!==teamKey);
+  else if(list==='avoid')avoidlist=avoidlist.filter(k=>k!==teamKey);
+  saveLists();renderAlliance();
+}
+
+function getList(id){return id==='pick1'?pick1list:id==='pick2'?pick2list:avoidlist;}
+function setList(id,arr){if(id==='pick1')pick1list=arr;else if(id==='pick2')pick2list=arr;else avoidlist=arr;}
+
+function onDragStart(e,listId,idx){
+  dragSrc={listId,idx};
+  e.dataTransfer.effectAllowed='move';
+  e.currentTarget.classList.add('dragging');
+}
+function onDragOver(e){e.preventDefault();e.dataTransfer.dropEffect='move';}
+function onDragEnter(e){e.currentTarget.classList.add('drag-over');}
+function onDragLeave(e){e.currentTarget.classList.remove('drag-over');}
+function onDragEnd(e){e.currentTarget.classList.remove('dragging');document.querySelectorAll('.drag-over').forEach(el=>el.classList.remove('drag-over'));}
+function onDrop(e,listId,toIdx){
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  if(!dragSrc)return;
+  const fromList=getList(dragSrc.listId);
+  const toList=getList(listId);
+  const item=fromList[dragSrc.idx];
+  if(!item)return;
+  if(dragSrc.listId===listId){
+    fromList.splice(dragSrc.idx,1);
+    fromList.splice(toIdx,0,item);
+    setList(listId,fromList);
+  }else{
+    fromList.splice(dragSrc.idx,1);
+    setList(dragSrc.listId,fromList);
+    toList.splice(toIdx,0,item);
+    setList(listId,toList);
+  }
+  dragSrc=null;saveLists();renderAlliance();
+}
+function onDropEmpty(e,listId){
+  e.preventDefault();
+  if(!dragSrc||dragSrc.listId===listId)return;
+  const fromList=getList(dragSrc.listId);
+  const toList=getList(listId);
+  const item=fromList.splice(dragSrc.idx,1)[0];
+  if(!toList.includes(item))toList.push(item);
+  setList(dragSrc.listId,fromList);setList(listId,toList);
+  dragSrc=null;saveLists();renderAlliance();
+}
+
+// ── SCOUT DATA ──
 function parseQRScout(raw){
   const parts=raw.trim().split('\t');
   if(parts.length<4)return null;
   const obj={};
-  QR_COLS.forEach((col,i)=>{obj[col]=parts[i]!==undefined?parts[i].trim():''});
+  QR_COLS.forEach((col,i)=>{obj[col]=parts[i]!==undefined?parts[i].trim():'';});
   if(!obj.teamNumber||isNaN(parseInt(obj.teamNumber)))return null;
-  obj.teamNumber=parseInt(obj.teamNumber);
-  obj.matchNumber=parseInt(obj.matchNumber)||0;
-  obj._id=Date.now()+'_'+Math.random().toString(36).slice(2,7);
-  obj._ts=Date.now();
+  obj.teamNumber=parseInt(obj.teamNumber);obj.matchNumber=parseInt(obj.matchNumber)||0;
+  obj._id=Date.now()+'_'+Math.random().toString(36).slice(2,7);obj._ts=Date.now();
   return obj;
 }
-
-function saveScout(entry){
-  scoutData.push(entry);
-  localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));
-}
-
-function deleteScout(id){
-  scoutData=scoutData.filter(x=>x._id!==id);
-  localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));
-}
-
-// ── SCANNER ──
-async function toggleScanner(){
-  if(scannerActive){stopScanner();return;}
-  try{
-    const constraints={video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}}};
-    scanStream=await navigator.mediaDevices.getUserMedia(constraints);
-    const vid=document.getElementById('scannerVideo');
-    const wrap=document.getElementById('scanVideoWrap');
-    vid.srcObject=scanStream;
-    wrap.style.display='block';
-    document.getElementById('scanPrompt').textContent='Scanning... hold QR code inside the box';
-    document.getElementById('scanToggleBtn').textContent='⏹ Stop Scanner';
-    scannerActive=true;
-    // Wait for video to actually be playing before scanning
-    vid.onplaying=()=>{
-      scanAnimFrame=requestAnimationFrame(scanFrame);
-    };
-    // Fallback if onplaying doesn't fire
-    setTimeout(()=>{if(scannerActive&&!scanAnimFrame){scanAnimFrame=requestAnimationFrame(scanFrame);}},1000);
-  }catch(e){
-    showScanError('Camera access denied or unavailable. Use the manual paste option below.');
-  }
-}
-
-function stopScanner(){
-  if(scanStream){scanStream.getTracks().forEach(t=>t.stop());scanStream=null;}
-  if(scanAnimFrame){cancelAnimationFrame(scanAnimFrame);scanAnimFrame=null;}
-  const vid=document.getElementById('scannerVideo');
-  const wrap=document.getElementById('scanVideoWrap');
-  if(vid){vid.srcObject=null;}
-  if(wrap){wrap.style.display='none';}
-  const btn=document.getElementById('scanToggleBtn');
-  if(btn)btn.textContent='▶ Start Camera Scanner';
-  const prompt=document.getElementById('scanPrompt');
-  if(prompt)prompt.textContent='Point camera at a QRScout QR code after a match';
-  scannerActive=false;
-}
-
-function scanFrame(){
-  if(!scannerActive){return;}
-  const vid=document.getElementById('scannerVideo');
-  const canvas=document.getElementById('scanCanvas');
-  if(!vid||!canvas||vid.readyState<2||vid.videoWidth===0){
-    scanAnimFrame=requestAnimationFrame(scanFrame);
-    return;
-  }
-  // Match canvas to video dimensions
-  canvas.width=vid.videoWidth;
-  canvas.height=vid.videoHeight;
-  const ctx=canvas.getContext('2d',{willReadFrequently:true});
-  ctx.drawImage(vid,0,0,canvas.width,canvas.height);
-  let imageData;
-  try{imageData=ctx.getImageData(0,0,canvas.width,canvas.height);}
-  catch(e){scanAnimFrame=requestAnimationFrame(scanFrame);return;}
-  // Try both inversion modes
-  let code=jsQR(imageData.data,imageData.width,imageData.height,{inversionAttempts:'attemptBoth'});
-  if(code&&code.data&&code.data.trim()){
-    const raw=code.data.trim();
-    const entry=parseQRScout(raw);
-    if(entry){
-      const dup=scoutData.find(x=>String(x.teamNumber)===String(entry.teamNumber)&&String(x.matchNumber)===String(entry.matchNumber)&&x.robot===entry.robot);
-      if(!dup){
-        saveScout(entry);
-        showScanSuccess(`Imported: Team ${entry.teamNumber}, Match ${entry.matchNumber} (${entry.robot})`);
-        renderRecentScans();renderTeamGrid();stopScanner();
-      }else{
-        showScanError('Duplicate: this match entry already exists for Team '+entry.teamNumber);
-        stopScanner();
-      }
-      return;
-    }
-    // QR found but not QRScout format — keep scanning
-  }
-  scanAnimFrame=requestAnimationFrame(scanFrame);
-}
+function saveScout(entry){scoutData.push(entry);localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));}
+function deleteScout(id){scoutData=scoutData.filter(x=>x._id!==id);localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));}
 
 function importManual(){
-  const raw=document.getElementById('manualInput').value;
-  if(!raw.trim()){showScanError('Paste some data first.');return;}
-  const entry=parseQRScout(raw);
-  if(!entry){showScanError('Could not parse data. Make sure it is tab-separated QRScout output.');return;}
-  const dup=scoutData.find(x=>String(x.teamNumber)===String(entry.teamNumber)&&String(x.matchNumber)===String(entry.matchNumber)&&x.robot===entry.robot);
-  if(dup){showScanError('Duplicate: this match entry already exists for Team '+entry.teamNumber);return;}
-  saveScout(entry);
+  const raw=document.getElementById('manualInput').value.trim();
+  if(!raw){showScanError('Paste some data first.');return;}
+  const lines=raw.split('\n').map(l=>l.trim()).filter(l=>l.length>0);
+  let imported=0,dupes=0,failed=0;
+  for(const line of lines){
+    const entry=parseQRScout(line);
+    if(!entry){failed++;continue;}
+    const dup=scoutData.find(x=>String(x.teamNumber)===String(entry.teamNumber)&&String(x.matchNumber)===String(entry.matchNumber)&&x.robot===entry.robot);
+    if(dup){dupes++;continue;}
+    saveScout(entry);imported++;
+  }
   document.getElementById('manualInput').value='';
-  showScanSuccess(`Imported: Team ${entry.teamNumber}, Match ${entry.matchNumber} (${entry.robot})`);
-  renderRecentScans();
-  renderTeamGrid();
+  renderRecentScans();renderTeamGrid();renderScoutingOverview();
+  let msg=`Imported ${imported} entr${imported===1?'y':'ies'}`;
+  if(dupes>0)msg+=`, ${dupes} duplicate${dupes>1?'s':''} skipped`;
+  if(failed>0)msg+=`, ${failed} failed`;
+  if(imported>0)showScanSuccess(msg);else showScanError(msg);
 }
 
-function showScanSuccess(msg){
-  const el=document.getElementById('scanResult');
-  el.textContent='✓ '+msg;el.style.display='block';
-  document.getElementById('scanError').style.display='none';
-  setTimeout(()=>el.style.display='none',4000);
-}
-function showScanError(msg){
-  const el=document.getElementById('scanError');
-  el.textContent='✕ '+msg;el.style.display='block';
-  document.getElementById('scanResult').style.display='none';
-  setTimeout(()=>el.style.display='none',5000);
-}
+function showScanSuccess(msg){const el=document.getElementById('scanResult');el.textContent='✓ '+msg;el.style.display='block';document.getElementById('scanError').style.display='none';setTimeout(()=>el.style.display='none',4000);}
+function showScanError(msg){const el=document.getElementById('scanError');el.textContent='✕ '+msg;el.style.display='block';document.getElementById('scanResult').style.display='none';setTimeout(()=>el.style.display='none',5000);}
 
 function renderRecentScans(){
-  const el=document.getElementById('recentScans');
-  if(!el)return;
-  if(!scoutData.length){el.innerHTML='<div style="padding:16px;font-size:13px;color:var(--text3);text-align:center">No scans yet</div>';return;}
-  const recent=[...scoutData].sort((a,b)=>b._ts-a._ts).slice(0,20);
-  el.innerHTML=`<div class="recent-scans-header"><h3>Recent Imports (${scoutData.length} total)</h3><button class="clear-all-btn" onclick="clearAllScouts()">Clear All</button></div>`+
-    recent.map(e=>`<div class="scan-item">
-      <span class="scan-team">${e.teamNumber}</span>
-      <span class="scan-meta">Match ${e.matchNumber} · ${e.robot} · ${e.scouter||'?'}</span>
-      <button class="scan-del" onclick="deleteScanEntry('${e._id}')">&#10005;</button>
-    </div>`).join('');
+  const el=document.getElementById('recentScans');if(!el)return;
+  if(!scoutData.length){el.innerHTML='<div style="padding:16px;font-size:13px;color:var(--text3);text-align:center">No entries yet</div>';return;}
+  const recent=[...scoutData].sort((a,b)=>b._ts-a._ts).slice(0,30);
+  el.innerHTML=`<div class="recent-scans-header"><h3>Imported (${scoutData.length} total)</h3><button class="clear-all-btn" onclick="clearAllScouts()">Clear All</button></div>`+
+    recent.map(e=>`<div class="scan-item"><span class="scan-team">${e.teamNumber}</span><span class="scan-meta">Match ${e.matchNumber} · ${robotLabel(e.robot)} · ${e.scouter||'?'}</span><button class="scan-del" onclick="deleteScanEntry('${e._id}')">&#10005;</button></div>`).join('');
 }
-
 function deleteScanEntry(id){deleteScout(id);renderRecentScans();renderTeamGrid();renderScoutingOverview();}
 function clearAllScouts(){if(confirm('Delete all scouting data?')){scoutData=[];localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));renderRecentScans();renderTeamGrid();renderScoutingOverview();}}
 
-// ── SCOUTING OVERVIEW PAGE ──
 function renderScoutingOverview(){
   const el=document.getElementById('scoutingContent');
-  if(!scoutData.length){el.innerHTML='<div class="empty" style="padding-top:30px">No scouting data yet. Use the Scanner tab to import QR codes.</div>';return;}
+  if(!scoutData.length){el.innerHTML='<div class="empty" style="padding-top:30px">No scouting data yet.</div>';return;}
   const byTeam={};
   for(const e of scoutData){const k=String(e.teamNumber);if(!byTeam[k])byTeam[k]=[];byTeam[k].push(e);}
   const teams=Object.keys(byTeam).sort((a,b)=>parseInt(a)-parseInt(b));
@@ -643,57 +639,43 @@ function renderScoutingOverview(){
     const teamInfo=eventTeams.find(t=>String(t.team_number)===tn);
     const name=teamInfo?teamInfo.nickname:'Unknown';
     const teamKey=teamInfo?teamInfo.key:'frc'+tn;
-    const avgFuel=avg(entries,e=>totalFuel(e));
-    const climbCounts=climbSummary(entries);
     html+=`<div class="scout-team-card" onclick="openTeam('${teamKey}','${tn}','${esc(name)}')">
-      <div class="scout-team-top">
-        <span class="scout-team-num">${tn}</span>
-        <span class="scout-team-name">${esc(name)}</span>
-        <span class="scout-count">${entries.length} match${entries.length>1?'es':''}</span>
-      </div>
+      <div class="scout-team-top"><span class="scout-team-num">${tn}</span><span class="scout-team-name">${esc(name)}</span><span class="scout-count">${entries.length} match${entries.length>1?'es':''}</span></div>
       <div class="mini-stats">
-        <div class="mini-stat">Avg Fuel <span>${avgFuel.toFixed(0)}</span></div>
-        <div class="mini-stat">Climb <span>${climbCounts}</span></div>
-        <div class="mini-stat">Drive <span>${avgSkill(entries,'Drskill')}</span></div>
-        <div class="mini-stat">Accuracy <span>${avgSkill(entries,'askill')}</span></div>
+        <div class="mini-stat">Avg Fuel <span>${avg(entries,e=>totalFuel(e)).toFixed(0)}</span></div>
+        <div class="mini-stat">Climb <span>${climbSummary(entries)}</span></div>
+        <div class="mini-stat">Drive <span>${avgSkill(entries,'Drskill')}/5</span></div>
+        <div class="mini-stat">Accuracy <span>${avgAccuracy(entries)}/5</span></div>
       </div>
     </div>`;
   }
-  html+='</div>';
-  el.innerHTML=html;
+  html+='</div>';el.innerHTML=html;
 }
 
-// ── SCOUT PANEL (inside team detail) ──
 function renderScoutPanel(entries,teamNum){
-  if(!entries.length)return`<div class="scout-empty">No scouting data for Team ${teamNum} yet.<br><br>Use the Scanner tab to import QR codes from your scouts.</div>`;
+  if(!entries.length)return`<div class="scout-empty">No scouting data for Team ${teamNum} yet.</div>`;
   const avgF=avg(entries,e=>totalFuel(e));
-  const maxF=Math.max(...entries.map(e=>totalFuel(e)),1);
   let html=`<div class="scout-summary"><h3>Averages across ${entries.length} match${entries.length>1?'es':''}</h3>
     <div class="scout-bar-row"><span class="scout-bar-label">Avg Total Fuel</span><div class="scout-bar-track"><div class="scout-bar-fill" style="width:${Math.min(100,(avgF/150)*100)}%"></div></div><span class="scout-bar-val">${avgF.toFixed(0)}</span></div>
-    <div class="scout-bar-row"><span class="scout-bar-label">Auto Fuel (avg)</span><div class="scout-bar-track"><div class="scout-bar-fill" style="width:${Math.min(100,(avg(entries,e=>autoFuel(e))/40)*100)}%;background:var(--green)"></div></div><span class="scout-bar-val">${avg(entries,e=>autoFuel(e)).toFixed(0)}</span></div>
+    <div class="scout-bar-row"><span class="scout-bar-label">Auto Fuel</span><div class="scout-bar-track"><div class="scout-bar-fill" style="width:${Math.min(100,(avg(entries,e=>autoFuel(e))/40)*100)}%;background:var(--green)"></div></div><span class="scout-bar-val">${avg(entries,e=>autoFuel(e)).toFixed(0)}</span></div>
     <div style="margin-top:8px">
-      <div class="info-row"><span class="lbl">Drive Skill</span><span class="val">${avgSkill(entries,'Drskill')}</span></div>
-      <div class="info-row"><span class="lbl">Defense Skill</span><span class="val">${avgSkill(entries,'Dskill')}</span></div>
-      <div class="info-row"><span class="lbl">Accuracy</span><span class="val">${avgSkill(entries,'askill')}</span></div>
+      <div class="info-row"><span class="lbl">Drive Skill</span><span class="val">${avgSkill(entries,'Drskill')}/5</span></div>
+      <div class="info-row"><span class="lbl">Defense Skill</span><span class="val">${avgSkill(entries,'Dskill')}/5</span></div>
+      <div class="info-row"><span class="lbl">Accuracy</span><span class="val">${avgAccuracy(entries)}/5</span></div>
       <div class="info-row"><span class="lbl">Best Climb</span><span class="val">${bestClimb(entries)}</span></div>
       <div class="info-row"><span class="lbl">Disabled</span><span class="val">${entries.filter(e=>e.disabled==='true'||e.disabled===true).length}/${entries.length}</span></div>
-    </div>
-  </div>`;
+    </div></div>`;
   const sorted=[...entries].sort((a,b)=>b.matchNumber-a.matchNumber);
   for(const e of sorted){
-    const tf=totalFuel(e);
     const climbLabel={'0':'Failed','1':'L1','2':'L2','3':'L3','x':'No Climb'}[e.eclimb]||e.eclimb||'—';
     html+=`<div class="scout-entry">
-      <div class="scout-entry-header">
-        <span class="scout-entry-title">Match ${e.matchNumber} · ${e.robot} · ${e.scouter||'?'}</span>
-        <button class="scout-entry-del" onclick="deleteScoutEntry('${e._id}',this)">&#10005;</button>
-      </div>
+      <div class="scout-entry-header"><span class="scout-entry-title">Match ${e.matchNumber} · ${robotLabel(e.robot)} · ${e.scouter||'?'}</span><button class="scout-entry-del" onclick="deleteScoutEntry('${e._id}',this)">&#10005;</button></div>
       <div class="scout-entry-grid">
         <div class="scout-entry-field">Auto Fuel <span>${autoFuel(e)}</span></div>
-        <div class="scout-entry-field">Total Fuel <span>${tf}</span></div>
-        <div class="scout-entry-field">Endgame Climb <span>${climbLabel}</span></div>
-        <div class="scout-entry-field">Auto L1 Climb <span>${e.aclimb==='true'||e.aclimb===true?'Yes':'No'}</span></div>
-        <div class="scout-entry-field">Drive Skill <span>${skillLabel(e.Drskill)}</span></div>
+        <div class="scout-entry-field">Total Fuel <span>${totalFuel(e)}</span></div>
+        <div class="scout-entry-field">Endgame <span>${climbLabel}</span></div>
+        <div class="scout-entry-field">Auto Climb <span>${e.aclimb==='true'||e.aclimb===true?'Yes':'No'}</span></div>
+        <div class="scout-entry-field">Drive <span>${skillLabel(e.Drskill)}</span></div>
         <div class="scout-entry-field">Accuracy <span>${accuracyLabel(e.askill)}</span></div>
         <div class="scout-entry-field">Role A1 <span>${roleLabel(e.a1role)}</span></div>
         <div class="scout-entry-field">Role A2 <span>${roleLabel(e.a2role)}</span></div>
@@ -704,37 +686,23 @@ function renderScoutPanel(entries,teamNum){
   return html;
 }
 
-function deleteScoutEntry(id,btn){
-  deleteScout(id);
-  const entry=btn.closest('.scout-entry');
-  if(entry)entry.remove();
-  renderTeamGrid();
-}
-
-// ── SCOUT HELPERS ──
+function deleteScoutEntry(id,btn){deleteScout(id);btn.closest('.scout-entry').remove();renderTeamGrid();}
 function autoFuel(e){return(parseInt(e.afuel8)||0)+(parseInt(e.afuel)||0);}
 function totalFuel(e){return autoFuel(e)+(parseInt(e.Tfuel)||0)+(parseInt(e.a1fuel)||0)+(parseInt(e.a2fuel)||0)+(parseInt(e.efuel)||0);}
 function avg(arr,fn){if(!arr.length)return 0;return arr.reduce((s,e)=>s+fn(e),0)/arr.length;}
-function climbSummary(entries){
-  const best=entries.map(e=>({'0':0,'1':1,'2':2,'3':3,'x':-1}[e.eclimb]??-1));
-  const maxC=Math.max(...best,-1);
-  return maxC<0?'None':maxC===0?'Failed':'L'+maxC;
-}
+function climbSummary(entries){const best=entries.map(e=>({'0':0,'1':1,'2':2,'3':3,'x':-1}[e.eclimb]??-1));const maxC=Math.max(...best,-1);return maxC<0?'None':maxC===0?'Failed':'L'+maxC;}
 function bestClimb(entries){return climbSummary(entries);}
+function skillToNum(v){return{'-1':1,'-.5':2,'0':3,'.5':4,'1':5}[v]??null;}
+function avgSkill(entries,field){const vals=entries.map(e=>skillToNum(e[field])).filter(v=>v!==null);if(!vals.length)return'—';return(vals.reduce((s,v)=>s+v,0)/vals.length).toFixed(1);}
+function accuracyToNum(v){return{'-1':1,'-.5':2,'0':3,'.5':4,'1':5}[v]??null;}
+function avgAccuracy(entries){const vals=entries.map(e=>accuracyToNum(e.askill)).filter(v=>v!==null);if(!vals.length)return'—';return(vals.reduce((s,v)=>s+v,0)/vals.length).toFixed(1);}
 function skillLabel(v){return{'-1':'1-Hindrance','-.5':'2-Not Effective','0':'3-Fairly Effective','.5':'4-Effective','1':'5-Very Effective','x':'Not Observed'}[v]||v||'—';}
 function accuracyLabel(v){return{'-1':'≤50%','-.5':'60-75%','0':'75-85%','.5':'85-95%','1':'95-100%','x':'Not Observed'}[v]||v||'—';}
 function roleLabel(v){return{s:'Shooter',l:'Shuttle',d:'Defense',x:'Did Nothing',o:'Other'}[v]||v||'—';}
-function avgSkill(entries,field){
-  const vals=entries.map(e=>parseFloat(e[field])).filter(v=>!isNaN(v));
-  if(!vals.length)return'—';
-  const a=vals.reduce((s,v)=>s+v,0)/vals.length;
-  return a.toFixed(1);
-}
+function robotLabel(v){return{R1:'Red 1',R2:'Red 2',R3:'Red 3',B1:'Blue 1',B2:'Blue 2',B3:'Blue 3'}[v]||v||'—';}
 
 // ── CHECKLISTS ──
-const DEFAULT_EVENT_LIST=['Bumpers (both sets)','Battery x3 minimum','Battery charger','Tool bag (allen keys, screwdrivers, pliers)','Laptop + charger','Driver station cable','Spare motors (Falcon, NEO)','Gearbox spare parts','Zip ties + velcro','Electrical spare (breakers, wire)','Pit banner + table cloth','Team shirts / buttons','Safety glasses x5','Radio + OM5P','Pneumatics kit (if applicable)','3D printer filament spares','Competition manual printout','Team registration docs'];
-const DEFAULT_MATCH_LIST=['Robot powered on','Battery fully charged + secured','Bumpers on and tight','All mechanisms move freely','Radio light solid green','Driver station connected','Autonomous selected','Alliance partners confirmed','Tablet / scouting ready','Strategy review done'];
-function getChecklist(type){const k='frc_checklist_'+type;const s=localStorage.getItem(k);if(s)return JSON.parse(s);const items=(type==='event'?DEFAULT_EVENT_LIST:DEFAULT_MATCH_LIST).map((t,i)=>({id:i,text:t,checked:false}));localStorage.setItem(k,JSON.stringify(items));return items;}
+function getChecklist(type){const k='frc_checklist_'+type;const s=localStorage.getItem(k);if(s)return JSON.parse(s);const items=(type==='event'?DEFAULT_EVENT:DEFAULT_MATCH).map((t,i)=>({id:i,text:t,checked:false}));localStorage.setItem(k,JSON.stringify(items));return items;}
 function saveChecklist(type,items){localStorage.setItem('frc_checklist_'+type,JSON.stringify(items));}
 function renderChecklist(type){
   const items=getChecklist(type);const done=items.filter(x=>x.checked).length;
@@ -747,18 +715,7 @@ function deleteCheck(type,id){saveChecklist(type,getChecklist(type).filter(x=>x.
 function resetChecklist(type){saveChecklist(type,getChecklist(type).map(x=>({...x,checked:false})));renderChecklist(type);}
 function showChecklist(type,tab){document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');document.getElementById('checklist-event').style.display=type==='event'?'block':'none';document.getElementById('checklist-match').style.display=type==='match'?'block':'none';}
 
-// ── ALLIANCE ──
-function renderAlliance(){
-  if(!eventTeams.length){document.getElementById('allianceContent').innerHTML='<div class="empty">No event loaded.</div>';return;}
-  const pickHTML=picklist.map((tk,i)=>{const t=eventTeams.find(x=>x.key===tk)||{key:tk,team_number:tk,nickname:''};return`<div class="alliance-item" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')"><span class="rank-badge">${i+1}</span><span class="alliance-num">${t.team_number}</span><span class="alliance-name">${esc(t.nickname||'')}</span><button class="alliance-remove" onclick="event.stopPropagation();removeFromList('pick','${tk}')">&#10005;</button></div>`;}).join('')||'<div style="padding:12px;font-size:12px;color:var(--text3)">None added</div>';
-  const avoidHTML=avoidlist.map((tk,i)=>{const t=eventTeams.find(x=>x.key===tk)||{key:tk,team_number:tk,nickname:''};return`<div class="alliance-item" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')"><span class="rank-badge">${i+1}</span><span class="alliance-num">${t.team_number}</span><span class="alliance-name">${esc(t.nickname||'')}</span><button class="alliance-remove" onclick="event.stopPropagation();removeFromList('avoid','${tk}')">&#10005;</button></div>`;}).join('')||'<div style="padding:12px;font-size:12px;color:var(--text3)">None added</div>';
-  const allTeams=eventTeams.map(t=>{const inP=picklist.includes(t.key),inA=avoidlist.includes(t.key);return`<div class="all-team-row"><span class="ath-num">${t.team_number}</span><span class="ath-name">${esc(t.nickname)}</span><div class="all-team-actions"><button class="add-pick" onclick="addToList('pick','${t.key}')" ${inP?'disabled style="opacity:0.4"':''}>+ Pick</button><button class="add-avoid" onclick="addToList('avoid','${t.key}')" ${inA?'disabled style="opacity:0.4"':''}>Avoid</button></div></div>`;}).join('');
-  document.getElementById('allianceContent').innerHTML=`<div class="alliance-container"><div class="alliance-cols"><div class="alliance-col"><div class="alliance-col-header pick"><h3>&#9733; Pick List</h3></div><div>${pickHTML}</div></div><div class="alliance-col"><div class="alliance-col-header avoid"><h3>&#9888; Avoid</h3></div><div>${avoidHTML}</div></div></div><div class="alliance-all-title">All Teams</div>${allTeams}</div>`;
-}
-function addToList(list,teamKey){if(list==='pick'&&!picklist.includes(teamKey)){picklist.push(teamKey);localStorage.setItem('frc_picklist',JSON.stringify(picklist));}if(list==='avoid'&&!avoidlist.includes(teamKey)){avoidlist.push(teamKey);localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));}renderAlliance();}
-function removeFromList(list,teamKey){if(list==='pick'){picklist=picklist.filter(k=>k!==teamKey);localStorage.setItem('frc_picklist',JSON.stringify(picklist));}if(list==='avoid'){avoidlist=avoidlist.filter(k=>k!==teamKey);localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));}renderAlliance();}
-
-// INIT
+// ── INIT ──
 renderChecklist('event');renderChecklist('match');
 if(currentEvent){document.getElementById('eventCodeInput').value=currentEvent;document.getElementById('eventBadgeText').textContent=currentEvent;document.getElementById('eventBadge').style.display='flex';if(eventTeams.length)renderTeamGrid();}
 renderRecentScans();

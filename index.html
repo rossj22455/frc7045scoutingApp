@@ -7,6 +7,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="FRC Strategy">
 <title>FRC Strategy</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a0e1a">
 <style>
 :root{--bg:#0a0e1a;--bg2:#111827;--bg3:#1a2235;--card:#1e2a3d;--card2:#243047;--accent:#3b82f6;--accent2:#60a5fa;--green:#10b981;--red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;--text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--radius:12px;--radius-sm:8px;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -218,8 +220,15 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
   <div class="page-header"><h1>QR Scanner</h1><p>Scan QRScout data from scouts</p></div>
   <div class="scanner-wrap">
     <div class="scan-box">
-      <video id="scannerVideo" playsinline autoplay muted></video>
-      <p id="scanPrompt">Point camera at a QRScout QR code after a match</p>
+      <div id="scanVideoWrap" style="display:none;margin-bottom:12px;border-radius:8px;overflow:hidden;position:relative;width:100%;background:#000;">
+        <video id="scannerVideo" playsinline autoplay muted style="width:100%;height:auto;display:block;"></video>
+        <canvas id="scanCanvas" style="display:none;"></canvas>
+        <!-- aim box — no box-shadow, just a bright border centered -->
+        <div style="position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center;">
+          <div style="width:60%;aspect-ratio:1;border:3px solid var(--accent);border-radius:8px;background:transparent;"></div>
+        </div>
+      </div>
+      <p id="scanPrompt" style="margin-bottom:10px;">Point camera at a QRScout QR code after a match</p>
       <button class="scan-btn" id="scanToggleBtn" onclick="toggleScanner()">&#9654; Start Camera Scanner</button>
     </div>
     <div id="scanResult" class="scan-result"></div>
@@ -276,7 +285,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
   </button>
 </nav>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
+<script src="https://unpkg.com/@zxing/library@0.19.1/umd/index.min.js"></script>
 <script>
 const TBA_KEY='sBdj6c4Yga6cd3nQTNKa6siKfkVedQKgizLVflrPSFEqmxUgyFe9jto4jjyo2cz8';
 const TBA='https://www.thebluealliance.com/api/v3';
@@ -512,15 +521,23 @@ function deleteScout(id){
 async function toggleScanner(){
   if(scannerActive){stopScanner();return;}
   try{
-    scanStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
+    const constraints={video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}}};
+    scanStream=await navigator.mediaDevices.getUserMedia(constraints);
     const vid=document.getElementById('scannerVideo');
-    vid.srcObject=scanStream;vid.style.display='block';
-    document.getElementById('scanPrompt').textContent='Scanning... hold QR code steady';
+    const wrap=document.getElementById('scanVideoWrap');
+    vid.srcObject=scanStream;
+    wrap.style.display='block';
+    document.getElementById('scanPrompt').textContent='Scanning... hold QR code inside the box';
     document.getElementById('scanToggleBtn').textContent='⏹ Stop Scanner';
     scannerActive=true;
-    vid.addEventListener('loadedmetadata',()=>{scanFrame();});
+    // Wait for video to actually be playing before scanning
+    vid.onplaying=()=>{
+      scanAnimFrame=requestAnimationFrame(scanFrame);
+    };
+    // Fallback if onplaying doesn't fire
+    setTimeout(()=>{if(scannerActive&&!scanAnimFrame){scanAnimFrame=requestAnimationFrame(scanFrame);}},1000);
   }catch(e){
-    showScanError('Camera access denied. Use the manual paste option below.');
+    showScanError('Camera access denied or unavailable. Use the manual paste option below.');
   }
 }
 
@@ -528,7 +545,9 @@ function stopScanner(){
   if(scanStream){scanStream.getTracks().forEach(t=>t.stop());scanStream=null;}
   if(scanAnimFrame){cancelAnimationFrame(scanAnimFrame);scanAnimFrame=null;}
   const vid=document.getElementById('scannerVideo');
-  if(vid){vid.style.display='none';vid.srcObject=null;}
+  const wrap=document.getElementById('scanVideoWrap');
+  if(vid){vid.srcObject=null;}
+  if(wrap){wrap.style.display='none';}
   const btn=document.getElementById('scanToggleBtn');
   if(btn)btn.textContent='▶ Start Camera Scanner';
   const prompt=document.getElementById('scanPrompt');
@@ -537,31 +556,39 @@ function stopScanner(){
 }
 
 function scanFrame(){
-  if(!scannerActive)return;
+  if(!scannerActive){return;}
   const vid=document.getElementById('scannerVideo');
-  if(!vid||vid.readyState<2){scanAnimFrame=requestAnimationFrame(scanFrame);return;}
-  const canvas=document.createElement('canvas');
-  canvas.width=vid.videoWidth;canvas.height=vid.videoHeight;
-  const ctx=canvas.getContext('2d');ctx.drawImage(vid,0,0);
-  const img=ctx.getImageData(0,0,canvas.width,canvas.height);
-  const code=jsQR(img.data,img.width,img.height,{inversionAttempts:'dontInvert'});
-  if(code&&code.data){
-    const entry=parseQRScout(code.data);
+  const canvas=document.getElementById('scanCanvas');
+  if(!vid||!canvas||vid.readyState<2||vid.videoWidth===0){
+    scanAnimFrame=requestAnimationFrame(scanFrame);
+    return;
+  }
+  // Match canvas to video dimensions
+  canvas.width=vid.videoWidth;
+  canvas.height=vid.videoHeight;
+  const ctx=canvas.getContext('2d',{willReadFrequently:true});
+  ctx.drawImage(vid,0,0,canvas.width,canvas.height);
+  let imageData;
+  try{imageData=ctx.getImageData(0,0,canvas.width,canvas.height);}
+  catch(e){scanAnimFrame=requestAnimationFrame(scanFrame);return;}
+  // Try both inversion modes
+  let code=jsQR(imageData.data,imageData.width,imageData.height,{inversionAttempts:'attemptBoth'});
+  if(code&&code.data&&code.data.trim()){
+    const raw=code.data.trim();
+    const entry=parseQRScout(raw);
     if(entry){
-      // Check for duplicate (same team + match)
       const dup=scoutData.find(x=>String(x.teamNumber)===String(entry.teamNumber)&&String(x.matchNumber)===String(entry.matchNumber)&&x.robot===entry.robot);
       if(!dup){
         saveScout(entry);
         showScanSuccess(`Imported: Team ${entry.teamNumber}, Match ${entry.matchNumber} (${entry.robot})`);
-        renderRecentScans();
-        renderTeamGrid();
-        stopScanner();
-      } else {
+        renderRecentScans();renderTeamGrid();stopScanner();
+      }else{
         showScanError('Duplicate: this match entry already exists for Team '+entry.teamNumber);
         stopScanner();
       }
       return;
-    }else{showScanError('QR code found but data format not recognized. Try manual paste.');}
+    }
+    // QR found but not QRScout format — keep scanning
   }
   scanAnimFrame=requestAnimationFrame(scanFrame);
 }
@@ -737,10 +764,11 @@ function renderAlliance(){
 function addToList(list,teamKey){if(list==='pick'&&!picklist.includes(teamKey)){picklist.push(teamKey);localStorage.setItem('frc_picklist',JSON.stringify(picklist));}if(list==='avoid'&&!avoidlist.includes(teamKey)){avoidlist.push(teamKey);localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));}renderAlliance();}
 function removeFromList(list,teamKey){if(list==='pick'){picklist=picklist.filter(k=>k!==teamKey);localStorage.setItem('frc_picklist',JSON.stringify(picklist));}if(list==='avoid'){avoidlist=avoidlist.filter(k=>k!==teamKey);localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));}renderAlliance();}
 
-// ── INIT ──
+// INIT
 renderChecklist('event');renderChecklist('match');
 if(currentEvent){document.getElementById('eventCodeInput').value=currentEvent;document.getElementById('eventBadgeText').textContent=currentEvent;document.getElementById('eventBadge').style.display='flex';if(eventTeams.length)renderTeamGrid();}
 renderRecentScans();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
 </script>
 </body>
 </html>

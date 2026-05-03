@@ -1,0 +1,15 @@
+{
+  "name": "FRC Strategy",
+  "short_name": "FRC",
+  "start_url": "/frc7045scoutingApp/",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#0a0e1a",
+  "icons": [
+    {
+      "src": "https://www.thebluealliance.com/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

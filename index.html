@@ -220,16 +220,10 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
   <div class="page-header"><h1>QR Scanner</h1><p>Scan QRScout data from scouts</p></div>
   <div class="scanner-wrap">
     <div class="scan-box">
-      <div id="scanVideoWrap" style="display:none;margin-bottom:12px;border-radius:8px;overflow:hidden;position:relative;width:100%;background:#000;">
-        <video id="scannerVideo" playsinline autoplay muted style="width:100%;height:auto;display:block;"></video>
-        <canvas id="scanCanvas" style="display:none;"></canvas>
-        <!-- aim box — no box-shadow, just a bright border centered -->
-        <div style="position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center;">
-          <div style="width:60%;aspect-ratio:1;border:3px solid var(--accent);border-radius:8px;background:transparent;"></div>
-        </div>
-      </div>
-      <p id="scanPrompt" style="margin-bottom:10px;">Point camera at a QRScout QR code after a match</p>
-      <button class="scan-btn" id="scanToggleBtn" onclick="toggleScanner()">&#9654; Start Camera Scanner</button>
+      <canvas id="snapCanvas" style="display:none;width:100%;border-radius:8px;margin-bottom:10px;"></canvas>
+      <p id="scanPrompt" style="margin-bottom:10px;">Take a photo of the QRScout QR code</p>
+      <input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none;" onchange="handlePhoto(this)"/>
+      <button class="scan-btn" onclick="document.getElementById('photoInput').click()">&#128247; Take Photo of QR Code</button>
     </div>
     <div id="scanResult" class="scan-result"></div>
     <div id="scanError" class="scan-error"></div>
@@ -285,7 +279,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
   </button>
 </nav>
 
-<script src="https://unpkg.com/@zxing/library@0.19.1/umd/index.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
 <script>
 const TBA_KEY='sBdj6c4Yga6cd3nQTNKa6siKfkVedQKgizLVflrPSFEqmxUgyFe9jto4jjyo2cz8';
 const TBA='https://www.thebluealliance.com/api/v3';

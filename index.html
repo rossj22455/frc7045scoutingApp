@@ -8,28 +8,15 @@
 <meta name="apple-mobile-web-app-title" content="FRC Strategy">
 <title>FRC Strategy</title>
 <style>
-:root {
-  --bg:#0a0e1a;--bg2:#111827;--bg3:#1a2235;--card:#1e2a3d;--card2:#243047;
-  --accent:#3b82f6;--accent2:#60a5fa;--accent3:#93c5fd;
-  --green:#10b981;--red:#ef4444;--amber:#f59e0b;
-  --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
-  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
-  --radius:12px;--radius-sm:8px;
-}
+:root{--bg:#0a0e1a;--bg2:#111827;--bg3:#1a2235;--card:#1e2a3d;--card2:#243047;--accent:#3b82f6;--accent2:#60a5fa;--green:#10b981;--red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;--text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--radius:12px;--radius-sm:8px;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',system-ui,sans-serif;min-height:100vh;overflow-x:hidden;}
-
-/* NAV */
 nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom);}
 .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px;background:none;border:none;color:var(--text3);cursor:pointer;font-size:9px;font-weight:500;letter-spacing:0.3px;transition:color 0.2s;}
 .nav-btn.active{color:var(--accent2);}
 .nav-btn svg{width:22px;height:22px;}
-
-/* PAGES */
 .page{display:none;min-height:100vh;padding-bottom:80px;}
 .page.active{display:block;}
-
-/* FILM PAGE HEADER — fixed height, no wrapping */
 .film-header{background:var(--bg2);padding:52px 16px 12px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;}
 .film-header h1{font-size:22px;font-weight:700;letter-spacing:-0.5px;margin-bottom:2px;}
 .event-bar{display:flex;gap:8px;align-items:center;margin-top:8px;}
@@ -39,16 +26,13 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .event-badge{display:flex;align-items:center;gap:6px;margin-top:8px;overflow:hidden;}
 .event-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;}
 .event-badge-text{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
-/* GENERIC PAGE HEADER */
 .page-header{background:var(--bg2);padding:52px 16px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;}
 .page-header h1{font-size:22px;font-weight:700;letter-spacing:-0.5px;}
 .page-header p{font-size:13px;color:var(--text2);margin-top:2px;}
-
-/* TEAM GRID */
 .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:14px;}
-.team-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;cursor:pointer;transition:border-color 0.2s,background 0.2s;display:flex;flex-direction:column;gap:8px;}
+.team-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;cursor:pointer;transition:border-color 0.2s,background 0.2s;display:flex;flex-direction:column;gap:8px;position:relative;}
 .team-card:active{background:var(--card2);border-color:var(--accent);}
+.scout-dot{position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--purple);}
 .team-logo-box{width:48px;height:48px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
 .team-logo-box img{width:48px;height:48px;object-fit:contain;}
 .team-logo-fallback{font-weight:700;font-size:12px;color:var(--accent2);text-align:center;padding:2px;}
@@ -57,34 +41,23 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .team-record{font-size:12px;color:var(--text2);}
 .record-w{color:var(--green);font-weight:600;}
 .record-l{color:var(--red);font-weight:600;}
-
-/* TEAM DETAIL — TRUE FULL SCREEN OVERLAY */
-#teamDetail{
-  display:none;
-  position:fixed;
-  top:0;left:0;right:0;bottom:0;
-  z-index:200;
-  background:var(--bg);
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-}
+#teamDetail{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .detail-header{background:var(--bg2);padding:52px 16px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;}
 .back-btn{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:7px 12px;color:var(--text);font-size:13px;cursor:pointer;display:flex;align-items:center;gap:5px;flex-shrink:0;}
 .detail-header-info{min-width:0;}
 .detail-header-info h2{font-size:18px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .detail-header-info p{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .detail-body{padding:14px;padding-bottom:30px;}
-
+.detail-tabs{display:flex;gap:6px;margin-bottom:14px;}
+.detail-tab{flex:1;padding:8px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-size:12px;font-weight:600;text-align:center;cursor:pointer;transition:all 0.2s;}
+.detail-tab.active{background:var(--accent);border-color:var(--accent);color:white;}
 .video-container{background:var(--card);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;aspect-ratio:16/9;position:relative;}
-.video-container iframe{width:100%;height:100%;border:none;}
 .video-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text3);font-size:13px;}
-
 .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px;}
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;}
 .stat-label{font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;}
 .stat-value{font-size:20px;font-weight:700;color:var(--text);}
 .stat-value.good{color:var(--green);}
-
 .section-title{font-size:13px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;margin-top:14px;}
 .match-list{display:flex;flex-direction:column;gap:6px;}
 .match-row{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color 0.2s;}
@@ -97,19 +70,33 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .match-result.loss{background:rgba(239,68,68,0.15);color:var(--red);}
 .match-result.tie{background:rgba(245,158,11,0.15);color:var(--amber);}
 .play-icon{color:var(--accent);font-size:14px;}
-
 .team-hero{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:14px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);}
 .hero-logo-box{width:60px;height:60px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
 .hero-logo-box img{width:60px;height:60px;object-fit:contain;}
 .hero-num{font-size:26px;font-weight:800;color:var(--accent2);}
 .hero-name{font-size:14px;color:var(--text);}
 .hero-loc{font-size:12px;color:var(--text2);}
-
 .info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
 .info-row:last-child{border-bottom:none;}
 .info-row .lbl{font-size:13px;color:var(--text2);}
 .info-row .val{font-size:13px;font-weight:600;}
-
+/* SCOUTING PANEL */
+.scout-empty{text-align:center;padding:30px 20px;color:var(--text3);font-size:13px;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);}
+.scout-summary{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px;}
+.scout-summary h3{font-size:14px;font-weight:600;color:var(--accent2);margin-bottom:10px;}
+.scout-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.scout-bar-label{font-size:12px;color:var(--text2);min-width:100px;}
+.scout-bar-track{flex:1;height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;}
+.scout-bar-fill{height:100%;border-radius:4px;background:var(--accent);}
+.scout-bar-val{font-size:12px;font-weight:600;min-width:32px;text-align:right;}
+.scout-entry{background:var(--bg3);border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:8px;border-left:3px solid var(--purple);}
+.scout-entry-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.scout-entry-title{font-size:13px;font-weight:600;color:var(--purple);}
+.scout-entry-del{background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;}
+.scout-entry-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;}
+.scout-entry-field{font-size:11px;color:var(--text2);}
+.scout-entry-field span{color:var(--text);font-weight:500;}
+.scout-comments{font-size:12px;color:var(--text2);margin-top:6px;font-style:italic;}
 /* CHECKLIST */
 .checklist-section{margin:14px;background:var(--card);border-radius:var(--radius);overflow:hidden;}
 .checklist-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
@@ -128,7 +115,6 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .sub-tabs{display:flex;gap:6px;padding:14px 14px 0;}
 .sub-tab{flex:1;padding:8px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-size:12px;font-weight:600;text-align:center;cursor:pointer;transition:all 0.2s;}
 .sub-tab.active{background:var(--accent);border-color:var(--accent);color:white;}
-
 /* ALLIANCE */
 .alliance-container{padding:14px;}
 .alliance-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
@@ -151,7 +137,40 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .all-team-actions{display:flex;gap:6px;}
 .add-pick{background:rgba(16,185,129,0.15);border:none;border-radius:6px;padding:6px 10px;color:var(--green);font-size:11px;font-weight:600;cursor:pointer;}
 .add-avoid{background:rgba(239,68,68,0.15);border:none;border-radius:6px;padding:6px 10px;color:var(--red);font-size:11px;font-weight:600;cursor:pointer;}
-
+/* SCANNER PAGE */
+.scanner-wrap{padding:14px;}
+.scan-box{background:var(--card);border:2px dashed var(--border2);border-radius:var(--radius);padding:20px;text-align:center;margin-bottom:14px;}
+.scan-box p{font-size:13px;color:var(--text2);margin-bottom:12px;}
+.scan-btn{background:var(--purple);border:none;border-radius:var(--radius-sm);padding:12px 24px;color:white;font-size:15px;font-weight:600;cursor:pointer;width:100%;}
+.scan-btn:active{opacity:0.8;}
+#scannerVideo{width:100%;border-radius:var(--radius-sm);display:none;margin-bottom:10px;max-height:280px;object-fit:cover;}
+.manual-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:14px;}
+.manual-box h3{font-size:14px;font-weight:600;margin-bottom:10px;color:var(--text2);}
+.manual-box textarea{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px;color:var(--text);font-size:13px;outline:none;resize:vertical;min-height:70px;font-family:monospace;}
+.manual-box textarea:focus{border-color:var(--accent);}
+.import-btn{background:var(--accent);border:none;border-radius:var(--radius-sm);padding:10px;color:white;font-size:14px;font-weight:600;cursor:pointer;width:100%;margin-top:8px;}
+.scan-result{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:var(--radius-sm);padding:12px;margin-bottom:10px;font-size:13px;color:#6ee7b7;display:none;}
+.scan-error{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius-sm);padding:12px;margin-bottom:10px;font-size:13px;color:#fca5a5;display:none;}
+.recent-scans{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.recent-scans-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.recent-scans-header h3{font-size:14px;font-weight:600;}
+.clear-all-btn{background:none;border:none;color:var(--red);font-size:12px;cursor:pointer;}
+.scan-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);}
+.scan-item:last-child{border-bottom:none;}
+.scan-team{font-size:14px;font-weight:700;color:var(--accent2);min-width:50px;}
+.scan-meta{font-size:12px;color:var(--text2);flex:1;}
+.scan-del{background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;}
+/* SCOUTING OVERVIEW PAGE */
+.scout-overview{padding:14px;}
+.scout-team-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:10px;cursor:pointer;}
+.scout-team-card:active{background:var(--card2);}
+.scout-team-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.scout-team-num{font-size:16px;font-weight:700;color:var(--accent2);}
+.scout-team-name{font-size:12px;color:var(--text2);flex:1;}
+.scout-count{font-size:11px;background:rgba(139,92,246,0.2);color:var(--purple);padding:3px 8px;border-radius:20px;font-weight:600;}
+.mini-stats{display:flex;gap:8px;flex-wrap:wrap;}
+.mini-stat{font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:6px;color:var(--text2);}
+.mini-stat span{color:var(--text);font-weight:600;}
 .loading{text-align:center;padding:40px 20px;color:var(--text3);font-size:14px;}
 .spinner{width:28px;height:28px;border:3px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 12px;}
 @keyframes spin{to{transform:rotate(360deg);}}
@@ -161,11 +180,12 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 </head>
 <body>
 
+<!-- FILM PAGE -->
 <div id="page-film" class="page active">
   <div class="film-header">
     <h1>Film Review</h1>
     <div class="event-bar">
-      <input id="eventCodeInput" type="text" placeholder="Event code (e.g. 2025njfla)" autocapitalize="none" autocorrect="off" spellcheck="false"/>
+      <input id="eventCodeInput" type="text" placeholder="Event code (e.g. 2026njfla)" autocapitalize="none" autocorrect="off" spellcheck="false"/>
       <button onclick="loadEvent()">Load</button>
     </div>
     <div id="eventBadge" style="display:none" class="event-badge">
@@ -176,6 +196,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
   <div id="filmContent"><div class="empty" style="padding-top:40px">Enter an event code above to load teams.</div></div>
 </div>
 
+<!-- CHECKLIST PAGE -->
 <div id="page-checklist" class="page">
   <div class="page-header"><h1>Checklists</h1><p>Pre-event &amp; pre-match prep</p></div>
   <div class="sub-tabs">
@@ -186,12 +207,39 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
   <div id="checklist-match" style="display:none"></div>
 </div>
 
+<!-- ALLIANCE PAGE -->
 <div id="page-alliance" class="page">
   <div class="page-header"><h1>Alliance Selection</h1><p id="allianceEventLabel">Load an event in Film Review first</p></div>
   <div id="allianceContent"><div class="empty" style="padding-top:30px">No event loaded.</div></div>
 </div>
 
-<!-- TEAM DETAIL FULL SCREEN OVERLAY -->
+<!-- SCANNER PAGE -->
+<div id="page-scanner" class="page">
+  <div class="page-header"><h1>QR Scanner</h1><p>Scan QRScout data from scouts</p></div>
+  <div class="scanner-wrap">
+    <div class="scan-box">
+      <video id="scannerVideo" playsinline autoplay muted></video>
+      <p id="scanPrompt">Point camera at a QRScout QR code after a match</p>
+      <button class="scan-btn" id="scanToggleBtn" onclick="toggleScanner()">&#9654; Start Camera Scanner</button>
+    </div>
+    <div id="scanResult" class="scan-result"></div>
+    <div id="scanError" class="scan-error"></div>
+    <div class="manual-box">
+      <h3>Or paste raw QRScout data manually</h3>
+      <textarea id="manualInput" placeholder="Paste tab-separated QRScout data here..."></textarea>
+      <button class="import-btn" onclick="importManual()">Import Data</button>
+    </div>
+    <div class="recent-scans" id="recentScans"></div>
+  </div>
+</div>
+
+<!-- SCOUTING OVERVIEW PAGE -->
+<div id="page-scouting" class="page">
+  <div class="page-header"><h1>Scouting Data</h1><p>All imported scout reports</p></div>
+  <div id="scoutingContent"><div class="empty" style="padding-top:30px">No scouting data yet. Use the Scanner tab to import QR codes.</div></div>
+</div>
+
+<!-- TEAM DETAIL OVERLAY -->
 <div id="teamDetail">
   <div class="detail-header">
     <button class="back-btn" onclick="closeDetail()">&#8592; Back</button>
@@ -218,36 +266,40 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 3.13a4 4 0 010 7.75"/><path d="M21 21v-2a4 4 0 00-3-3.87"/></svg>
     Alliance
   </button>
+  <button class="nav-btn" onclick="showPage('scanner',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/><rect x="7" y="7" width="4" height="4"/><rect x="13" y="7" width="4" height="4"/><rect x="7" y="13" width="4" height="4"/><path d="M13 13h4v4"/></svg>
+    Scanner
+  </button>
+  <button class="nav-btn" onclick="showPage('scouting',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+    Scouting
+  </button>
 </nav>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
 <script>
 const TBA_KEY='sBdj6c4Yga6cd3nQTNKa6siKfkVedQKgizLVflrPSFEqmxUgyFe9jto4jjyo2cz8';
 const TBA='https://www.thebluealliance.com/api/v3';
+
+// QRScout 2026 column order from scouting.wlhsfrc.com/2026
+// scouter,matchNumber,robot,teamNumber,afuel8,afuel,aclimb,Tfuel,shift,a1fuel,a1role,a2fuel,a2role,efuel,eclimb,disabled,aside,Arank,sCon,Drskill,Dskill,askill,comm
+const QR_COLS=['scouter','matchNumber','robot','teamNumber','afuel8','afuel','aclimb','Tfuel','shift','a1fuel','a1role','a2fuel','a2role','efuel','eclimb','disabled','aside','Arank','sCon','Drskill','Dskill','askill','comm'];
+
 let currentEvent=localStorage.getItem('frc_event')||'';
 let eventTeams=JSON.parse(localStorage.getItem('frc_teams')||'[]');
 let eventStatuses=JSON.parse(localStorage.getItem('frc_statuses')||'{}');
 let picklist=JSON.parse(localStorage.getItem('frc_picklist')||'[]');
 let avoidlist=JSON.parse(localStorage.getItem('frc_avoidlist')||'[]');
+let scoutData=JSON.parse(localStorage.getItem('frc_scoutdata')||'[]');
 
-const DEFAULT_EVENT=[
-  'Bumpers (both sets)','Battery x3 minimum','Battery charger',
-  'Tool bag (allen keys, screwdrivers, pliers)','Laptop + charger',
-  'Driver station cable','Spare motors (Falcon, NEO)','Gearbox spare parts',
-  'Zip ties + velcro','Electrical spare (breakers, wire)','Pit banner + table cloth',
-  'Team shirts / buttons','Safety glasses x5','Radio + OM5P',
-  'Pneumatics kit (if applicable)','3D printer filament spares',
-  'Competition manual printout','Team registration docs'
-];
-const DEFAULT_MATCH=[
-  'Robot powered on','Battery fully charged + secured','Bumpers on and tight',
-  'All mechanisms move freely','Radio light solid green','Driver station connected',
-  'Autonomous selected','Alliance partners confirmed','Tablet / scouting ready',
-  'Strategy review done'
-];
+let scannerActive=false;
+let scanStream=null;
+let scanAnimFrame=null;
 
-function tbaFetch(path){
-  return fetch(TBA+path,{headers:{'X-TBA-Auth-Key':TBA_KEY}}).then(r=>r.json());
-}
+const DEFAULT_EVENT=['Bumpers (both sets)','Battery x3 minimum','Battery charger','Tool bag (allen keys, screwdrivers, pliers)','Laptop + charger','Driver station cable','Spare motors (Falcon, NEO)','Gearbox spare parts','Zip ties + velcro','Electrical spare (breakers, wire)','Pit banner + table cloth','Team shirts / buttons','Safety glasses x5','Radio + OM5P','Pneumatics kit (if applicable)','3D printer filament spares','Competition manual printout','Team registration docs'];
+const DEFAULT_MATCH=['Robot powered on','Battery fully charged + secured','Bumpers on and tight','All mechanisms move freely','Radio light solid green','Driver station connected','Autonomous selected','Alliance partners confirmed','Tablet / scouting ready','Strategy review done'];
+
+function tbaFetch(p){return fetch(TBA+p,{headers:{'X-TBA-Auth-Key':TBA_KEY}}).then(r=>r.json());}
 
 function showPage(name,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -256,64 +308,43 @@ function showPage(name,btn){
   closeDetail();
   if(btn)btn.classList.add('active');
   if(name==='alliance')renderAlliance();
+  if(name==='scouting')renderScoutingOverview();
+  if(name==='scanner')renderRecentScans();
+  if(name!=='scanner')stopScanner();
 }
 
-// Team logo with multiple fallbacks
-function teamLogoHTML(teamKey, teamNum, size=48) {
+// ── LOGOS ──
+function teamLogoHTML(teamKey,teamNum,size=48){
   const id='logo_'+teamKey.replace(/[^a-z0-9]/g,'_')+'_'+size;
-  const year=new Date().getFullYear();
-  // Try current year avatar, then previous, then frcavatars.com, then fallback to number
+  const yr=new Date().getFullYear();
   return `<div class="team-logo-box" style="width:${size}px;height:${size}px;border-radius:${size>50?'10px':'8px'}">
-    <img id="${id}" src="https://www.thebluealliance.com/avatar/${year}/${teamKey}.png"
+    <img id="${id}" src="https://www.thebluealliance.com/avatar/${yr}/${teamKey}.png"
       onerror="tryNextLogo(this,'${teamKey}',${teamNum},${size},1)"
-      style="width:${size}px;height:${size}px;object-fit:contain;display:block"/>
-  </div>`;
+      style="width:${size}px;height:${size}px;object-fit:contain;display:block"/></div>`;
 }
-function tryNextLogo(img, teamKey, teamNum, size, step) {
-  const year=new Date().getFullYear();
-  const fallbacks=[
-    `https://www.thebluealliance.com/avatar/${year-1}/${teamKey}.png`,
-    `https://frcavatars.com/avatar/${teamKey}`,
-    null
-  ];
-  if(step < fallbacks.length && fallbacks[step-1]!==null){
-    img.onerror=()=>tryNextLogo(img,teamKey,teamNum,size,step+1);
-    img.src=fallbacks[step-1];
-  } else {
-    // All failed — replace with number badge
-    img.parentNode.innerHTML=`<div class="team-logo-fallback" style="font-size:${size>50?14:11}px;color:var(--accent2);font-weight:700;width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center;text-align:center;padding:2px">${teamNum}</div>`;
-  }
+function tryNextLogo(img,teamKey,teamNum,size,step){
+  const yr=new Date().getFullYear();
+  const fb=[`https://www.thebluealliance.com/avatar/${yr-1}/${teamKey}.png`,`https://frcavatars.com/avatar/${teamKey}`,null];
+  if(step<fb.length&&fb[step-1]!==null){img.onerror=()=>tryNextLogo(img,teamKey,teamNum,size,step+1);img.src=fb[step-1];}
+  else{img.parentNode.innerHTML=`<div class="team-logo-fallback" style="font-size:${size>50?14:11}px;color:var(--accent2);font-weight:700;width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center">${teamNum}</div>`;}
 }
 
+// ── EVENT LOADING ──
 async function loadEvent(){
   const code=document.getElementById('eventCodeInput').value.trim().toLowerCase();
   if(!code)return;
   document.getElementById('filmContent').innerHTML='<div class="loading"><div class="spinner"></div>Loading event...</div>';
   document.getElementById('eventBadge').style.display='none';
   try{
-    const [teams,statuses,eventInfo]=await Promise.all([
-      tbaFetch('/event/'+code+'/teams'),
-      tbaFetch('/event/'+code+'/teams/statuses'),
-      tbaFetch('/event/'+code)
-    ]);
-    if(!Array.isArray(teams)||teams.length===0){
-      document.getElementById('filmContent').innerHTML='<div class="error-msg">No teams found for "'+code+'". Check the code and try again.</div>';
-      return;
-    }
-    currentEvent=code;
-    eventTeams=teams.sort((a,b)=>a.team_number-b.team_number);
-    eventStatuses=statuses||{};
-    localStorage.setItem('frc_event',currentEvent);
-    localStorage.setItem('frc_teams',JSON.stringify(eventTeams));
-    localStorage.setItem('frc_statuses',JSON.stringify(eventStatuses));
+    const [teams,statuses,eventInfo]=await Promise.all([tbaFetch('/event/'+code+'/teams'),tbaFetch('/event/'+code+'/teams/statuses'),tbaFetch('/event/'+code)]);
+    if(!Array.isArray(teams)||teams.length===0){document.getElementById('filmContent').innerHTML='<div class="error-msg">No teams found for "'+code+'". Check the code and try again.</div>';return;}
+    currentEvent=code;eventTeams=teams.sort((a,b)=>a.team_number-b.team_number);eventStatuses=statuses||{};
+    localStorage.setItem('frc_event',currentEvent);localStorage.setItem('frc_teams',JSON.stringify(eventTeams));localStorage.setItem('frc_statuses',JSON.stringify(eventStatuses));
     const eName=eventInfo.name||code;
-    document.getElementById('eventBadgeText').textContent=eName;
-    document.getElementById('eventBadge').style.display='flex';
+    document.getElementById('eventBadgeText').textContent=eName;document.getElementById('eventBadge').style.display='flex';
     document.getElementById('allianceEventLabel').textContent=eName;
     renderTeamGrid();
-  }catch(e){
-    document.getElementById('filmContent').innerHTML='<div class="error-msg">Failed to load event. Check connection or event code.</div>';
-  }
+  }catch(e){document.getElementById('filmContent').innerHTML='<div class="error-msg">Failed to load event. Check connection or event code.</div>';}
 }
 
 function renderTeamGrid(){
@@ -322,11 +353,10 @@ function renderTeamGrid(){
   for(const t of eventTeams){
     const s=eventStatuses[t.key];
     let rec='—';
-    if(s&&s.qual&&s.qual.ranking){
-      const r=s.qual.ranking;
-      rec=`<span class="record-w">${r.record?.wins??0}W</span> <span class="record-l">${r.record?.losses??0}L</span> ${r.record?.ties??0}T`;
-    }
+    if(s&&s.qual&&s.qual.ranking){const r=s.qual.ranking;rec=`<span class="record-w">${r.record?.wins??0}W</span> <span class="record-l">${r.record?.losses??0}L</span> ${r.record?.ties??0}T`;}
+    const hasScout=scoutData.some(x=>String(x.teamNumber)===String(t.team_number));
     html+=`<div class="team-card" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname)}')">
+      ${hasScout?'<div class="scout-dot"></div>':''}
       ${teamLogoHTML(t.key,t.team_number,48)}
       <div class="team-num">${t.team_number}</div>
       <div class="team-name">${esc(t.nickname)}</div>
@@ -339,67 +369,37 @@ function renderTeamGrid(){
 
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/'/g,"&#39;").replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
+// ── TEAM DETAIL ──
 async function openTeam(teamKey,num,name){
   const el=document.getElementById('teamDetail');
-  el.style.display='block';
-  el.scrollTop=0;
+  el.style.display='block';el.scrollTop=0;
   document.getElementById('detailTitle').textContent='Team '+num;
   document.getElementById('detailSubtitle').textContent=name;
   document.getElementById('detailBody').innerHTML='<div class="loading"><div class="spinner"></div>Loading team data...</div>';
-
   try{
-    const reqs=[
-      tbaFetch('/team/'+teamKey),
-      tbaFetch('/team/'+teamKey+'/awards/2025')
-    ];
-    if(currentEvent){
-      reqs.push(tbaFetch('/team/'+teamKey+'/event/'+currentEvent+'/matches'));
-      reqs.push(tbaFetch('/event/'+currentEvent+'/rankings'));
-      reqs.push(tbaFetch('/event/'+currentEvent+'/oprs'));
-    }
+    const reqs=[tbaFetch('/team/'+teamKey),tbaFetch('/team/'+teamKey+'/awards/2025')];
+    if(currentEvent){reqs.push(tbaFetch('/team/'+teamKey+'/event/'+currentEvent+'/matches'));reqs.push(tbaFetch('/event/'+currentEvent+'/rankings'));reqs.push(tbaFetch('/event/'+currentEvent+'/oprs'));}
     const results=await Promise.all(reqs);
-    const info=results[0];
-    const awards=results[1];
+    const info=results[0],awards=results[1];
     const matches=currentEvent?(results[2]||[]):[];
     const rankings=currentEvent?results[3]:null;
     const oprs=currentEvent?results[4]:null;
-
     let rank=null,record=null;
-    if(rankings&&rankings.rankings){
-      const r=rankings.rankings.find(x=>x.team_key===teamKey);
-      if(r){rank=r.rank;record=r.record;}
-    }
+    if(rankings&&rankings.rankings){const r=rankings.rankings.find(x=>x.team_key===teamKey);if(r){rank=r.rank;record=r.record;}}
     let oprVal=null,dprVal=null,ccwmVal=null;
     if(oprs&&oprs.oprs){oprVal=oprs.oprs[teamKey];dprVal=oprs.dprs?.[teamKey];ccwmVal=oprs.ccwms?.[teamKey];}
-
     const levelOrder={qm:0,ef:1,qf:2,sf:3,f:4};
-    const sorted=(Array.isArray(matches)?matches:[]).sort((a,b)=>{
-      const lo=(levelOrder[a.comp_level]??0)-(levelOrder[b.comp_level]??0);
-      if(lo!==0)return lo;
-      const so=(a.set_number||0)-(b.set_number||0);
-      if(so!==0)return so;
-      return(a.match_number||0)-(b.match_number||0);
-    });
-    let latestVideoKey=null,latestVideoMatch=null;
-    for(let i=sorted.length-1;i>=0;i--){
-      const m=sorted[i];
-      if(m.videos){const yt=m.videos.find(v=>v.type==='youtube');if(yt){latestVideoKey=yt.key;latestVideoMatch=m;break;}}
-    }
-    renderTeamDetail(info,sorted,teamKey,rank,record,oprVal,dprVal,ccwmVal,latestVideoKey,latestVideoMatch,awards);
-  }catch(e){
-    document.getElementById('detailBody').innerHTML='<div class="error-msg">Failed to load team data.</div>';
-  }
+    const sorted=(Array.isArray(matches)?matches:[]).sort((a,b)=>{const lo=(levelOrder[a.comp_level]??0)-(levelOrder[b.comp_level]??0);if(lo!==0)return lo;const so=(a.set_number||0)-(b.set_number||0);if(so!==0)return so;return(a.match_number||0)-(b.match_number||0);});
+    let latestVideoKey=null,latestMatchKey=null;
+    for(let i=sorted.length-1;i>=0;i--){const m=sorted[i];if(m.videos){const yt=m.videos.find(v=>v.type==='youtube');if(yt){latestVideoKey=yt.key;latestMatchKey=m.key;break;}}}
+    renderTeamDetail(info,sorted,teamKey,num,rank,record,oprVal,dprVal,ccwmVal,latestVideoKey,latestMatchKey,awards);
+  }catch(e){document.getElementById('detailBody').innerHTML='<div class="error-msg">Failed to load team data.</div>';}
 }
 
-function renderTeamDetail(info,matches,teamKey,rank,record,opr,dpr,ccwm,videoKey,videoMatch,awards){
+function renderTeamDetail(info,matches,teamKey,num,rank,record,opr,dpr,ccwm,videoKey,videoMatchKey,awards){
   const wins=record?.wins??'—',losses=record?.losses??'—',ties=record?.ties??'—';
-  const winRate=(record&&(record.wins+record.losses+record.ties)>0)
-    ?((record.wins/(record.wins+record.losses+record.ties))*100).toFixed(1)+'%':'—';
-
-  const videoHTML=videoKey&&videoMatch
-    ?buildVideoThumb(videoKey,videoMatch.key)
-    :`<div class="video-container"><div class="video-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>No match video yet</div></div>`;
-
+  const winRate=(record&&(record.wins+record.losses+record.ties)>0)?((record.wins/(record.wins+record.losses+record.ties))*100).toFixed(1)+'%':'—';
+  const videoHTML=videoKey&&videoMatchKey?buildVideoThumb(videoKey,videoMatchKey):`<div class="video-container"><div class="video-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>No match video yet</div></div>`;
   let matchRows='';
   for(const m of matches){
     const isRed=m.alliances?.red?.team_keys?.includes(teamKey);
@@ -410,40 +410,50 @@ function renderTeamDetail(info,matches,teamKey,rank,record,opr,dpr,ccwm,videoKey
     const lbl=m.comp_level==='qm'?'Q'+m.match_number:m.comp_level.toUpperCase()+m.set_number+'M'+m.match_number;
     const sc=(my>=0&&op>=0)?`${my} - ${op}`:'TBD';
     const yt=m.videos&&m.videos.find(v=>v.type==='youtube');
-    matchRows+=`<div class="match-row" onclick="${yt?`playVideo('${yt.key}',this)`:''}" style="${!yt?'opacity:0.6;cursor:default':''}">
-      <span class="match-key">${lbl}</span>
-      <span class="match-score">${sc}</span>
+    matchRows+=`<div class="match-row" onclick="${yt?`playVideo('${yt.key}','${m.key}',this)`:''}" style="${!yt?'opacity:0.6;cursor:default':''}">
+      <span class="match-key">${lbl}</span><span class="match-score">${sc}</span>
       <span class="match-result ${rc}">${result}</span>
       ${yt?'<span class="play-icon">&#9654;</span>':'<span style="font-size:10px;color:var(--text3)">no vid</span>'}
     </div>`;
-    if(yt) matchRows=matchRows.replace(`playVideo('${yt.key}',this)`,`playVideo('${yt.key}','${m.key}',this)`);
   }
-
+  const teamScouts=scoutData.filter(x=>String(x.teamNumber)===String(num));
+  const scoutHTML=renderScoutPanel(teamScouts,num);
   document.getElementById('detailBody').innerHTML=`
-    <div class="team-hero">
-      ${teamLogoHTML(teamKey,info.team_number,60)}
-      <div>
-        <div class="hero-num">${info.team_number}</div>
-        <div class="hero-name">${esc(info.nickname)}</div>
-        <div class="hero-loc">${[info.city,info.state_prov,info.country].filter(Boolean).join(', ')}</div>
+    <div class="detail-tabs">
+      <div class="detail-tab active" onclick="switchDetailTab('tba',this)">TBA Stats</div>
+      <div class="detail-tab" onclick="switchDetailTab('scout',this)">Scout Data ${teamScouts.length>0?`<span style="background:var(--purple);color:white;border-radius:10px;padding:1px 6px;font-size:10px;margin-left:4px">${teamScouts.length}</span>`:''}
       </div>
     </div>
-    ${videoHTML}
-    <div class="stat-grid">
-      <div class="stat-card"><div class="stat-label">Rank</div><div class="stat-value">${rank?'#'+rank:'—'}</div></div>
-      <div class="stat-card"><div class="stat-label">Win Rate</div><div class="stat-value ${wins>losses?'good':''}">${winRate}</div></div>
-      <div class="stat-card"><div class="stat-label">Record</div><div class="stat-value">${wins}-${losses}-${ties}</div></div>
-      <div class="stat-card"><div class="stat-label">OPR</div><div class="stat-value">${opr!=null?opr.toFixed(1):'—'}</div></div>
-      <div class="stat-card"><div class="stat-label">DPR</div><div class="stat-value">${dpr!=null?dpr.toFixed(1):'—'}</div></div>
-      <div class="stat-card"><div class="stat-label">CCWM</div><div class="stat-value ${ccwm>0?'good':''}">${ccwm!=null?ccwm.toFixed(1):'—'}</div></div>
+    <div id="dtab-tba">
+      <div class="team-hero">
+        ${teamLogoHTML(teamKey,info.team_number,60)}
+        <div><div class="hero-num">${info.team_number}</div><div class="hero-name">${esc(info.nickname)}</div><div class="hero-loc">${[info.city,info.state_prov,info.country].filter(Boolean).join(', ')}</div></div>
+      </div>
+      ${videoHTML}
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Rank</div><div class="stat-value">${rank?'#'+rank:'—'}</div></div>
+        <div class="stat-card"><div class="stat-label">Win Rate</div><div class="stat-value ${wins>losses?'good':''}">${winRate}</div></div>
+        <div class="stat-card"><div class="stat-label">Record</div><div class="stat-value">${wins}-${losses}-${ties}</div></div>
+        <div class="stat-card"><div class="stat-label">OPR</div><div class="stat-value">${opr!=null?opr.toFixed(1):'—'}</div></div>
+        <div class="stat-card"><div class="stat-label">DPR</div><div class="stat-value">${dpr!=null?dpr.toFixed(1):'—'}</div></div>
+        <div class="stat-card"><div class="stat-label">CCWM</div><div class="stat-value ${ccwm>0?'good':''}">${ccwm!=null?ccwm.toFixed(1):'—'}</div></div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:4px 14px;margin-bottom:14px">
+        <div class="info-row"><span class="lbl">Rookie Year</span><span class="val">${info.rookie_year||'—'}</span></div>
+        <div class="info-row"><span class="lbl">2025 Awards</span><span class="val">${awards?awards.length:0}</span></div>
+        <div class="info-row"><span class="lbl">Website</span><span class="val">${info.website?`<a href="${info.website}" style="color:var(--accent2)">${info.website.replace(/https?:\/\//,'').slice(0,28)}</a>`:'—'}</span></div>
+      </div>
+      <div class="section-title">Match History</div>
+      <div class="match-list">${matchRows||'<div class="empty">No matches played yet.</div>'}</div>
     </div>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:4px 14px;margin-bottom:14px">
-      <div class="info-row"><span class="lbl">Rookie Year</span><span class="val">${info.rookie_year||'—'}</span></div>
-      <div class="info-row"><span class="lbl">2025 Awards</span><span class="val">${awards?awards.length:0}</span></div>
-      <div class="info-row"><span class="lbl">Website</span><span class="val">${info.website?`<a href="${info.website}" style="color:var(--accent2)">${info.website.replace(/https?:\/\//,'').slice(0,28)}</a>`:'—'}</span></div>
-    </div>
-    <div class="section-title">Match History</div>
-    <div class="match-list">${matchRows||'<div class="empty">No matches played yet.</div>'}</div>`;
+    <div id="dtab-scout" style="display:none">${scoutHTML}</div>`;
+}
+
+function switchDetailTab(tab,btn){
+  document.querySelectorAll('.detail-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('dtab-tba').style.display=tab==='tba'?'block':'none';
+  document.getElementById('dtab-scout').style.display=tab==='scout'?'block':'none';
 }
 
 function buildVideoThumb(ytKey,matchKey){
@@ -459,7 +469,7 @@ function buildVideoThumb(ytKey,matchKey){
     <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);padding:7px 12px;font-size:12px;color:white;">Tap to open in YouTube</div>
   </div>`;
 }
-function showVideoFallback(ytKey){}
+
 function playVideo(ytKey,matchKey,row){
   document.querySelectorAll('.match-row').forEach(r=>r.classList.remove('active'));
   row.classList.add('active');
@@ -467,151 +477,270 @@ function playVideo(ytKey,matchKey,row){
   if(box){
     const ytUrl=`https://www.youtube.com/watch?v=${ytKey}&autoplay=1`;
     box.onclick=()=>window.open(ytUrl,'_blank');
-    box.querySelector('img').src=thumb;
+    box.querySelector('img').src=`https://img.youtube.com/vi/${ytKey}/hqdefault.jpg`;
     box.scrollIntoView({behavior:'smooth',block:'start'});
   }
 }
 
-function closeDetail(){
-  document.getElementById('teamDetail').style.display='none';
+function closeDetail(){document.getElementById('teamDetail').style.display='none';}
+
+// ── SCOUT DATA PARSING ──
+function parseQRScout(raw){
+  const parts=raw.trim().split('\t');
+  if(parts.length<4)return null;
+  const obj={};
+  QR_COLS.forEach((col,i)=>{obj[col]=parts[i]!==undefined?parts[i].trim():''});
+  if(!obj.teamNumber||isNaN(parseInt(obj.teamNumber)))return null;
+  obj.teamNumber=parseInt(obj.teamNumber);
+  obj.matchNumber=parseInt(obj.matchNumber)||0;
+  obj._id=Date.now()+'_'+Math.random().toString(36).slice(2,7);
+  obj._ts=Date.now();
+  return obj;
 }
 
-// CHECKLISTS
-function getChecklist(type){
-  const key='frc_checklist_'+type;
-  const stored=localStorage.getItem(key);
-  if(stored)return JSON.parse(stored);
-  const defs=type==='event'?DEFAULT_EVENT:DEFAULT_MATCH;
-  const items=defs.map((t,i)=>({id:i,text:t,checked:false}));
-  localStorage.setItem(key,JSON.stringify(items));
-  return items;
-}
-function saveChecklist(type,items){localStorage.setItem('frc_checklist_'+type,JSON.stringify(items));}
-
-function renderChecklist(type){
-  const items=getChecklist(type);
-  const done=items.filter(x=>x.checked).length;
-  let rows=items.map(item=>`
-    <div class="check-item ${item.checked?'checked':''}" id="ci-${type}-${item.id}">
-      <input type="checkbox" id="cb-${type}-${item.id}" ${item.checked?'checked':''} onchange="toggleCheck('${type}',${item.id})"/>
-      <label for="cb-${type}-${item.id}">${esc(item.text)}</label>
-      <button class="del-btn" onclick="deleteCheck('${type}',${item.id})">&#10005;</button>
-    </div>`).join('');
-  document.getElementById('checklist-'+type).innerHTML=`
-    <div class="checklist-section">
-      <div class="checklist-header">
-        <h3>${type==='event'?'Pre-Event':'Pre-Match'} Checklist</h3>
-        <span class="progress-badge" id="prog-${type}">${done}/${items.length}</span>
-      </div>
-      <div class="checklist-items">${rows}</div>
-      <div class="add-item-row">
-        <input type="text" id="newitem-${type}" placeholder="Add item..." onkeydown="if(event.key==='Enter')addCheck('${type}')"/>
-        <button onclick="addCheck('${type}')">Add</button>
-      </div>
-    </div>
-    <button class="reset-btn" onclick="resetChecklist('${type}')">Reset All Checkboxes</button>`;
+function saveScout(entry){
+  scoutData.push(entry);
+  localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));
 }
 
-function toggleCheck(type,id){
-  const items=getChecklist(type);
-  const item=items.find(x=>x.id===id);
-  if(item){item.checked=!item.checked;saveChecklist(type,items);}
-  const row=document.getElementById('ci-'+type+'-'+id);
-  if(row)row.classList.toggle('checked',item.checked);
-  const prog=document.getElementById('prog-'+type);
-  if(prog){const done=items.filter(x=>x.checked).length;prog.textContent=done+'/'+items.length;}
-}
-function addCheck(type){
-  const inp=document.getElementById('newitem-'+type);
-  const text=inp.value.trim();if(!text)return;
-  const items=getChecklist(type);
-  items.push({id:Date.now(),text,checked:false});
-  saveChecklist(type,items);inp.value='';renderChecklist(type);
-}
-function deleteCheck(type,id){
-  saveChecklist(type,getChecklist(type).filter(x=>x.id!==id));
-  renderChecklist(type);
-}
-function resetChecklist(type){
-  saveChecklist(type,getChecklist(type).map(x=>({...x,checked:false})));
-  renderChecklist(type);
-}
-function showChecklist(type,tab){
-  document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));
-  tab.classList.add('active');
-  document.getElementById('checklist-event').style.display=type==='event'?'block':'none';
-  document.getElementById('checklist-match').style.display=type==='match'?'block':'none';
+function deleteScout(id){
+  scoutData=scoutData.filter(x=>x._id!==id);
+  localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));
 }
 
-// ALLIANCE
-function renderAlliance(){
-  if(!eventTeams.length){
-    document.getElementById('allianceContent').innerHTML='<div class="empty">No event loaded. Go to Film Review and load an event first.</div>';
-    return;
+// ── SCANNER ──
+async function toggleScanner(){
+  if(scannerActive){stopScanner();return;}
+  try{
+    scanStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
+    const vid=document.getElementById('scannerVideo');
+    vid.srcObject=scanStream;vid.style.display='block';
+    document.getElementById('scanPrompt').textContent='Scanning... hold QR code steady';
+    document.getElementById('scanToggleBtn').textContent='⏹ Stop Scanner';
+    scannerActive=true;
+    vid.addEventListener('loadedmetadata',()=>{scanFrame();});
+  }catch(e){
+    showScanError('Camera access denied. Use the manual paste option below.');
   }
-  const pickHTML=picklist.map((tk,i)=>{
-    const t=eventTeams.find(x=>x.key===tk)||{key:tk,team_number:tk,nickname:''};
-    return `<div class="alliance-item" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')">
-      <span class="rank-badge">${i+1}</span>
-      <span class="alliance-num">${t.team_number}</span>
-      <span class="alliance-name">${esc(t.nickname||'')}</span>
-      <button class="alliance-remove" onclick="event.stopPropagation();removeFromList('pick','${tk}')">&#10005;</button>
-    </div>`;
-  }).join('')||'<div style="padding:12px;font-size:12px;color:var(--text3)">None added</div>';
+}
 
-  const avoidHTML=avoidlist.map((tk,i)=>{
-    const t=eventTeams.find(x=>x.key===tk)||{key:tk,team_number:tk,nickname:''};
-    return `<div class="alliance-item" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')">
-      <span class="rank-badge">${i+1}</span>
-      <span class="alliance-num">${t.team_number}</span>
-      <span class="alliance-name">${esc(t.nickname||'')}</span>
-      <button class="alliance-remove" onclick="event.stopPropagation();removeFromList('avoid','${tk}')">&#10005;</button>
-    </div>`;
-  }).join('')||'<div style="padding:12px;font-size:12px;color:var(--text3)">None added</div>';
+function stopScanner(){
+  if(scanStream){scanStream.getTracks().forEach(t=>t.stop());scanStream=null;}
+  if(scanAnimFrame){cancelAnimationFrame(scanAnimFrame);scanAnimFrame=null;}
+  const vid=document.getElementById('scannerVideo');
+  if(vid){vid.style.display='none';vid.srcObject=null;}
+  const btn=document.getElementById('scanToggleBtn');
+  if(btn)btn.textContent='▶ Start Camera Scanner';
+  const prompt=document.getElementById('scanPrompt');
+  if(prompt)prompt.textContent='Point camera at a QRScout QR code after a match';
+  scannerActive=false;
+}
 
-  const allTeams=eventTeams.map(t=>{
-    const inP=picklist.includes(t.key),inA=avoidlist.includes(t.key);
-    return `<div class="all-team-row">
-      <span class="ath-num">${t.team_number}</span>
-      <span class="ath-name">${esc(t.nickname)}</span>
-      <div class="all-team-actions">
-        <button class="add-pick" onclick="addToList('pick','${t.key}')" ${inP?'disabled style="opacity:0.4"':''}>+ Pick</button>
-        <button class="add-avoid" onclick="addToList('avoid','${t.key}')" ${inA?'disabled style="opacity:0.4"':''}>Avoid</button>
+function scanFrame(){
+  if(!scannerActive)return;
+  const vid=document.getElementById('scannerVideo');
+  if(!vid||vid.readyState<2){scanAnimFrame=requestAnimationFrame(scanFrame);return;}
+  const canvas=document.createElement('canvas');
+  canvas.width=vid.videoWidth;canvas.height=vid.videoHeight;
+  const ctx=canvas.getContext('2d');ctx.drawImage(vid,0,0);
+  const img=ctx.getImageData(0,0,canvas.width,canvas.height);
+  const code=jsQR(img.data,img.width,img.height,{inversionAttempts:'dontInvert'});
+  if(code&&code.data){
+    const entry=parseQRScout(code.data);
+    if(entry){
+      // Check for duplicate (same team + match)
+      const dup=scoutData.find(x=>String(x.teamNumber)===String(entry.teamNumber)&&String(x.matchNumber)===String(entry.matchNumber)&&x.robot===entry.robot);
+      if(!dup){
+        saveScout(entry);
+        showScanSuccess(`Imported: Team ${entry.teamNumber}, Match ${entry.matchNumber} (${entry.robot})`);
+        renderRecentScans();
+        renderTeamGrid();
+        stopScanner();
+      } else {
+        showScanError('Duplicate: this match entry already exists for Team '+entry.teamNumber);
+        stopScanner();
+      }
+      return;
+    }else{showScanError('QR code found but data format not recognized. Try manual paste.');}
+  }
+  scanAnimFrame=requestAnimationFrame(scanFrame);
+}
+
+function importManual(){
+  const raw=document.getElementById('manualInput').value;
+  if(!raw.trim()){showScanError('Paste some data first.');return;}
+  const entry=parseQRScout(raw);
+  if(!entry){showScanError('Could not parse data. Make sure it is tab-separated QRScout output.');return;}
+  const dup=scoutData.find(x=>String(x.teamNumber)===String(entry.teamNumber)&&String(x.matchNumber)===String(entry.matchNumber)&&x.robot===entry.robot);
+  if(dup){showScanError('Duplicate: this match entry already exists for Team '+entry.teamNumber);return;}
+  saveScout(entry);
+  document.getElementById('manualInput').value='';
+  showScanSuccess(`Imported: Team ${entry.teamNumber}, Match ${entry.matchNumber} (${entry.robot})`);
+  renderRecentScans();
+  renderTeamGrid();
+}
+
+function showScanSuccess(msg){
+  const el=document.getElementById('scanResult');
+  el.textContent='✓ '+msg;el.style.display='block';
+  document.getElementById('scanError').style.display='none';
+  setTimeout(()=>el.style.display='none',4000);
+}
+function showScanError(msg){
+  const el=document.getElementById('scanError');
+  el.textContent='✕ '+msg;el.style.display='block';
+  document.getElementById('scanResult').style.display='none';
+  setTimeout(()=>el.style.display='none',5000);
+}
+
+function renderRecentScans(){
+  const el=document.getElementById('recentScans');
+  if(!el)return;
+  if(!scoutData.length){el.innerHTML='<div style="padding:16px;font-size:13px;color:var(--text3);text-align:center">No scans yet</div>';return;}
+  const recent=[...scoutData].sort((a,b)=>b._ts-a._ts).slice(0,20);
+  el.innerHTML=`<div class="recent-scans-header"><h3>Recent Imports (${scoutData.length} total)</h3><button class="clear-all-btn" onclick="clearAllScouts()">Clear All</button></div>`+
+    recent.map(e=>`<div class="scan-item">
+      <span class="scan-team">${e.teamNumber}</span>
+      <span class="scan-meta">Match ${e.matchNumber} · ${e.robot} · ${e.scouter||'?'}</span>
+      <button class="scan-del" onclick="deleteScanEntry('${e._id}')">&#10005;</button>
+    </div>`).join('');
+}
+
+function deleteScanEntry(id){deleteScout(id);renderRecentScans();renderTeamGrid();renderScoutingOverview();}
+function clearAllScouts(){if(confirm('Delete all scouting data?')){scoutData=[];localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));renderRecentScans();renderTeamGrid();renderScoutingOverview();}}
+
+// ── SCOUTING OVERVIEW PAGE ──
+function renderScoutingOverview(){
+  const el=document.getElementById('scoutingContent');
+  if(!scoutData.length){el.innerHTML='<div class="empty" style="padding-top:30px">No scouting data yet. Use the Scanner tab to import QR codes.</div>';return;}
+  const byTeam={};
+  for(const e of scoutData){const k=String(e.teamNumber);if(!byTeam[k])byTeam[k]=[];byTeam[k].push(e);}
+  const teams=Object.keys(byTeam).sort((a,b)=>parseInt(a)-parseInt(b));
+  let html='<div class="scout-overview">';
+  for(const tn of teams){
+    const entries=byTeam[tn];
+    const teamInfo=eventTeams.find(t=>String(t.team_number)===tn);
+    const name=teamInfo?teamInfo.nickname:'Unknown';
+    const teamKey=teamInfo?teamInfo.key:'frc'+tn;
+    const avgFuel=avg(entries,e=>totalFuel(e));
+    const climbCounts=climbSummary(entries);
+    html+=`<div class="scout-team-card" onclick="openTeam('${teamKey}','${tn}','${esc(name)}')">
+      <div class="scout-team-top">
+        <span class="scout-team-num">${tn}</span>
+        <span class="scout-team-name">${esc(name)}</span>
+        <span class="scout-count">${entries.length} match${entries.length>1?'es':''}</span>
+      </div>
+      <div class="mini-stats">
+        <div class="mini-stat">Avg Fuel <span>${avgFuel.toFixed(0)}</span></div>
+        <div class="mini-stat">Climb <span>${climbCounts}</span></div>
+        <div class="mini-stat">Drive <span>${avgSkill(entries,'Drskill')}</span></div>
+        <div class="mini-stat">Accuracy <span>${avgSkill(entries,'askill')}</span></div>
       </div>
     </div>`;
-  }).join('');
+  }
+  html+='</div>';
+  el.innerHTML=html;
+}
 
-  document.getElementById('allianceContent').innerHTML=`
-    <div class="alliance-container">
-      <div class="alliance-cols">
-        <div class="alliance-col"><div class="alliance-col-header pick"><h3>&#9733; Pick List</h3></div><div>${pickHTML}</div></div>
-        <div class="alliance-col"><div class="alliance-col-header avoid"><h3>&#9888; Avoid</h3></div><div>${avoidHTML}</div></div>
+// ── SCOUT PANEL (inside team detail) ──
+function renderScoutPanel(entries,teamNum){
+  if(!entries.length)return`<div class="scout-empty">No scouting data for Team ${teamNum} yet.<br><br>Use the Scanner tab to import QR codes from your scouts.</div>`;
+  const avgF=avg(entries,e=>totalFuel(e));
+  const maxF=Math.max(...entries.map(e=>totalFuel(e)),1);
+  let html=`<div class="scout-summary"><h3>Averages across ${entries.length} match${entries.length>1?'es':''}</h3>
+    <div class="scout-bar-row"><span class="scout-bar-label">Avg Total Fuel</span><div class="scout-bar-track"><div class="scout-bar-fill" style="width:${Math.min(100,(avgF/150)*100)}%"></div></div><span class="scout-bar-val">${avgF.toFixed(0)}</span></div>
+    <div class="scout-bar-row"><span class="scout-bar-label">Auto Fuel (avg)</span><div class="scout-bar-track"><div class="scout-bar-fill" style="width:${Math.min(100,(avg(entries,e=>autoFuel(e))/40)*100)}%;background:var(--green)"></div></div><span class="scout-bar-val">${avg(entries,e=>autoFuel(e)).toFixed(0)}</span></div>
+    <div style="margin-top:8px">
+      <div class="info-row"><span class="lbl">Drive Skill</span><span class="val">${avgSkill(entries,'Drskill')}</span></div>
+      <div class="info-row"><span class="lbl">Defense Skill</span><span class="val">${avgSkill(entries,'Dskill')}</span></div>
+      <div class="info-row"><span class="lbl">Accuracy</span><span class="val">${avgSkill(entries,'askill')}</span></div>
+      <div class="info-row"><span class="lbl">Best Climb</span><span class="val">${bestClimb(entries)}</span></div>
+      <div class="info-row"><span class="lbl">Disabled</span><span class="val">${entries.filter(e=>e.disabled==='true'||e.disabled===true).length}/${entries.length}</span></div>
+    </div>
+  </div>`;
+  const sorted=[...entries].sort((a,b)=>b.matchNumber-a.matchNumber);
+  for(const e of sorted){
+    const tf=totalFuel(e);
+    const climbLabel={'0':'Failed','1':'L1','2':'L2','3':'L3','x':'No Climb'}[e.eclimb]||e.eclimb||'—';
+    html+=`<div class="scout-entry">
+      <div class="scout-entry-header">
+        <span class="scout-entry-title">Match ${e.matchNumber} · ${e.robot} · ${e.scouter||'?'}</span>
+        <button class="scout-entry-del" onclick="deleteScoutEntry('${e._id}',this)">&#10005;</button>
       </div>
-      <div class="alliance-all-title">All Teams</div>
-      ${allTeams}
+      <div class="scout-entry-grid">
+        <div class="scout-entry-field">Auto Fuel <span>${autoFuel(e)}</span></div>
+        <div class="scout-entry-field">Total Fuel <span>${tf}</span></div>
+        <div class="scout-entry-field">Endgame Climb <span>${climbLabel}</span></div>
+        <div class="scout-entry-field">Auto L1 Climb <span>${e.aclimb==='true'||e.aclimb===true?'Yes':'No'}</span></div>
+        <div class="scout-entry-field">Drive Skill <span>${skillLabel(e.Drskill)}</span></div>
+        <div class="scout-entry-field">Accuracy <span>${accuracyLabel(e.askill)}</span></div>
+        <div class="scout-entry-field">Role A1 <span>${roleLabel(e.a1role)}</span></div>
+        <div class="scout-entry-field">Role A2 <span>${roleLabel(e.a2role)}</span></div>
+      </div>
+      ${e.comm?`<div class="scout-comments">"${esc(e.comm)}"</div>`:''}
     </div>`;
+  }
+  return html;
 }
 
-function addToList(list,teamKey){
-  if(list==='pick'&&!picklist.includes(teamKey)){picklist.push(teamKey);localStorage.setItem('frc_picklist',JSON.stringify(picklist));}
-  if(list==='avoid'&&!avoidlist.includes(teamKey)){avoidlist.push(teamKey);localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));}
-  renderAlliance();
-}
-function removeFromList(list,teamKey){
-  if(list==='pick'){picklist=picklist.filter(k=>k!==teamKey);localStorage.setItem('frc_picklist',JSON.stringify(picklist));}
-  if(list==='avoid'){avoidlist=avoidlist.filter(k=>k!==teamKey);localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));}
-  renderAlliance();
+function deleteScoutEntry(id,btn){
+  deleteScout(id);
+  const entry=btn.closest('.scout-entry');
+  if(entry)entry.remove();
+  renderTeamGrid();
 }
 
-// INIT
-renderChecklist('event');
-renderChecklist('match');
-if(currentEvent){
-  document.getElementById('eventCodeInput').value=currentEvent;
-  document.getElementById('eventBadgeText').textContent=currentEvent;
-  document.getElementById('eventBadge').style.display='flex';
-  if(eventTeams.length)renderTeamGrid();
+// ── SCOUT HELPERS ──
+function autoFuel(e){return(parseInt(e.afuel8)||0)+(parseInt(e.afuel)||0);}
+function totalFuel(e){return autoFuel(e)+(parseInt(e.Tfuel)||0)+(parseInt(e.a1fuel)||0)+(parseInt(e.a2fuel)||0)+(parseInt(e.efuel)||0);}
+function avg(arr,fn){if(!arr.length)return 0;return arr.reduce((s,e)=>s+fn(e),0)/arr.length;}
+function climbSummary(entries){
+  const best=entries.map(e=>({'0':0,'1':1,'2':2,'3':3,'x':-1}[e.eclimb]??-1));
+  const maxC=Math.max(...best,-1);
+  return maxC<0?'None':maxC===0?'Failed':'L'+maxC;
 }
+function bestClimb(entries){return climbSummary(entries);}
+function skillLabel(v){return{'-1':'1-Hindrance','-.5':'2-Not Effective','0':'3-Fairly Effective','.5':'4-Effective','1':'5-Very Effective','x':'Not Observed'}[v]||v||'—';}
+function accuracyLabel(v){return{'-1':'≤50%','-.5':'60-75%','0':'75-85%','.5':'85-95%','1':'95-100%','x':'Not Observed'}[v]||v||'—';}
+function roleLabel(v){return{s:'Shooter',l:'Shuttle',d:'Defense',x:'Did Nothing',o:'Other'}[v]||v||'—';}
+function avgSkill(entries,field){
+  const vals=entries.map(e=>parseFloat(e[field])).filter(v=>!isNaN(v));
+  if(!vals.length)return'—';
+  const a=vals.reduce((s,v)=>s+v,0)/vals.length;
+  return a.toFixed(1);
+}
+
+// ── CHECKLISTS ──
+const DEFAULT_EVENT_LIST=['Bumpers (both sets)','Battery x3 minimum','Battery charger','Tool bag (allen keys, screwdrivers, pliers)','Laptop + charger','Driver station cable','Spare motors (Falcon, NEO)','Gearbox spare parts','Zip ties + velcro','Electrical spare (breakers, wire)','Pit banner + table cloth','Team shirts / buttons','Safety glasses x5','Radio + OM5P','Pneumatics kit (if applicable)','3D printer filament spares','Competition manual printout','Team registration docs'];
+const DEFAULT_MATCH_LIST=['Robot powered on','Battery fully charged + secured','Bumpers on and tight','All mechanisms move freely','Radio light solid green','Driver station connected','Autonomous selected','Alliance partners confirmed','Tablet / scouting ready','Strategy review done'];
+function getChecklist(type){const k='frc_checklist_'+type;const s=localStorage.getItem(k);if(s)return JSON.parse(s);const items=(type==='event'?DEFAULT_EVENT_LIST:DEFAULT_MATCH_LIST).map((t,i)=>({id:i,text:t,checked:false}));localStorage.setItem(k,JSON.stringify(items));return items;}
+function saveChecklist(type,items){localStorage.setItem('frc_checklist_'+type,JSON.stringify(items));}
+function renderChecklist(type){
+  const items=getChecklist(type);const done=items.filter(x=>x.checked).length;
+  let rows=items.map(item=>`<div class="check-item ${item.checked?'checked':''}" id="ci-${type}-${item.id}"><input type="checkbox" id="cb-${type}-${item.id}" ${item.checked?'checked':''} onchange="toggleCheck('${type}',${item.id})"/><label for="cb-${type}-${item.id}">${esc(item.text)}</label><button class="del-btn" onclick="deleteCheck('${type}',${item.id})">&#10005;</button></div>`).join('');
+  document.getElementById('checklist-'+type).innerHTML=`<div class="checklist-section"><div class="checklist-header"><h3>${type==='event'?'Pre-Event':'Pre-Match'} Checklist</h3><span class="progress-badge" id="prog-${type}">${done}/${items.length}</span></div><div class="checklist-items">${rows}</div><div class="add-item-row"><input type="text" id="newitem-${type}" placeholder="Add item..." onkeydown="if(event.key==='Enter')addCheck('${type}')"/><button onclick="addCheck('${type}')">Add</button></div></div><button class="reset-btn" onclick="resetChecklist('${type}')">Reset All Checkboxes</button>`;
+}
+function toggleCheck(type,id){const items=getChecklist(type);const item=items.find(x=>x.id===id);if(item){item.checked=!item.checked;saveChecklist(type,items);}const row=document.getElementById('ci-'+type+'-'+id);if(row)row.classList.toggle('checked',item.checked);const prog=document.getElementById('prog-'+type);if(prog){const done=items.filter(x=>x.checked).length;prog.textContent=done+'/'+items.length;}}
+function addCheck(type){const inp=document.getElementById('newitem-'+type);const text=inp.value.trim();if(!text)return;const items=getChecklist(type);items.push({id:Date.now(),text,checked:false});saveChecklist(type,items);inp.value='';renderChecklist(type);}
+function deleteCheck(type,id){saveChecklist(type,getChecklist(type).filter(x=>x.id!==id));renderChecklist(type);}
+function resetChecklist(type){saveChecklist(type,getChecklist(type).map(x=>({...x,checked:false})));renderChecklist(type);}
+function showChecklist(type,tab){document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');document.getElementById('checklist-event').style.display=type==='event'?'block':'none';document.getElementById('checklist-match').style.display=type==='match'?'block':'none';}
+
+// ── ALLIANCE ──
+function renderAlliance(){
+  if(!eventTeams.length){document.getElementById('allianceContent').innerHTML='<div class="empty">No event loaded.</div>';return;}
+  const pickHTML=picklist.map((tk,i)=>{const t=eventTeams.find(x=>x.key===tk)||{key:tk,team_number:tk,nickname:''};return`<div class="alliance-item" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')"><span class="rank-badge">${i+1}</span><span class="alliance-num">${t.team_number}</span><span class="alliance-name">${esc(t.nickname||'')}</span><button class="alliance-remove" onclick="event.stopPropagation();removeFromList('pick','${tk}')">&#10005;</button></div>`;}).join('')||'<div style="padding:12px;font-size:12px;color:var(--text3)">None added</div>';
+  const avoidHTML=avoidlist.map((tk,i)=>{const t=eventTeams.find(x=>x.key===tk)||{key:tk,team_number:tk,nickname:''};return`<div class="alliance-item" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')"><span class="rank-badge">${i+1}</span><span class="alliance-num">${t.team_number}</span><span class="alliance-name">${esc(t.nickname||'')}</span><button class="alliance-remove" onclick="event.stopPropagation();removeFromList('avoid','${tk}')">&#10005;</button></div>`;}).join('')||'<div style="padding:12px;font-size:12px;color:var(--text3)">None added</div>';
+  const allTeams=eventTeams.map(t=>{const inP=picklist.includes(t.key),inA=avoidlist.includes(t.key);return`<div class="all-team-row"><span class="ath-num">${t.team_number}</span><span class="ath-name">${esc(t.nickname)}</span><div class="all-team-actions"><button class="add-pick" onclick="addToList('pick','${t.key}')" ${inP?'disabled style="opacity:0.4"':''}>+ Pick</button><button class="add-avoid" onclick="addToList('avoid','${t.key}')" ${inA?'disabled style="opacity:0.4"':''}>Avoid</button></div></div>`;}).join('');
+  document.getElementById('allianceContent').innerHTML=`<div class="alliance-container"><div class="alliance-cols"><div class="alliance-col"><div class="alliance-col-header pick"><h3>&#9733; Pick List</h3></div><div>${pickHTML}</div></div><div class="alliance-col"><div class="alliance-col-header avoid"><h3>&#9888; Avoid</h3></div><div>${avoidHTML}</div></div></div><div class="alliance-all-title">All Teams</div>${allTeams}</div>`;
+}
+function addToList(list,teamKey){if(list==='pick'&&!picklist.includes(teamKey)){picklist.push(teamKey);localStorage.setItem('frc_picklist',JSON.stringify(picklist));}if(list==='avoid'&&!avoidlist.includes(teamKey)){avoidlist.push(teamKey);localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));}renderAlliance();}
+function removeFromList(list,teamKey){if(list==='pick'){picklist=picklist.filter(k=>k!==teamKey);localStorage.setItem('frc_picklist',JSON.stringify(picklist));}if(list==='avoid'){avoidlist=avoidlist.filter(k=>k!==teamKey);localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));}renderAlliance();}
+
+// ── INIT ──
+renderChecklist('event');renderChecklist('match');
+if(currentEvent){document.getElementById('eventCodeInput').value=currentEvent;document.getElementById('eventBadgeText').textContent=currentEvent;document.getElementById('eventBadge').style.display='flex';if(eventTeams.length)renderTeamGrid();}
+renderRecentScans();
 </script>
 </body>
 </html>

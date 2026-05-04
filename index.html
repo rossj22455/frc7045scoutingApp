@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="FRC Strategy">
@@ -14,9 +14,9 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',system-ui,sans-serif;min-height:100vh;overflow-x:hidden;}
 nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom);}
-.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px;background:none;border:none;color:var(--text3);cursor:pointer;font-size:9px;font-weight:500;letter-spacing:0.3px;transition:color 0.2s;}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;background:none;border:none;color:var(--text3);cursor:pointer;font-size:8px;font-weight:500;transition:color 0.2s;}
 .nav-btn.active{color:var(--accent2);}
-.nav-btn svg{width:22px;height:22px;}
+.nav-btn svg{width:20px;height:20px;}
 .page{display:none;min-height:100vh;padding-bottom:80px;}
 .page.active{display:block;}
 .film-header{background:var(--bg2);padding:52px 16px 12px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;}
@@ -32,7 +32,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .page-header h1{font-size:22px;font-weight:700;letter-spacing:-0.5px;}
 .page-header p{font-size:13px;color:var(--text2);margin-top:2px;}
 .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:14px;}
-.team-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;cursor:pointer;transition:border-color 0.2s,background 0.2s;display:flex;flex-direction:column;gap:8px;position:relative;}
+.team-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;cursor:pointer;transition:border-color 0.2s;display:flex;flex-direction:column;gap:8px;position:relative;}
 .team-card:active{background:var(--card2);border-color:var(--accent);}
 .scout-dot{position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--purple);}
 .team-logo-box{width:48px;height:48px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
@@ -45,7 +45,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .record-l{color:var(--red);font-weight:600;}
 #teamDetail{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .detail-header{background:var(--bg2);padding:52px 16px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;}
-.back-btn{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:7px 12px;color:var(--text);font-size:13px;cursor:pointer;display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.back-btn{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:7px 12px;color:var(--text);font-size:13px;cursor:pointer;flex-shrink:0;}
 .detail-header-info{min-width:0;}
 .detail-header-info h2{font-size:18px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .detail-header-info p{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -58,13 +58,12 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px;}
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;}
 .stat-label{font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;}
-.stat-value{font-size:20px;font-weight:700;color:var(--text);}
+.stat-value{font-size:20px;font-weight:700;}
 .stat-value.good{color:var(--green);}
 .section-title{font-size:13px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;margin-top:14px;}
 .match-list{display:flex;flex-direction:column;gap:6px;}
 .match-row{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color 0.2s;}
 .match-row.active{border-color:var(--accent);}
-.match-row:active{background:var(--card2);}
 .match-key{font-size:12px;font-weight:600;color:var(--accent2);min-width:60px;}
 .match-score{font-size:12px;color:var(--text2);flex:1;}
 .match-result{font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;}
@@ -76,7 +75,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .hero-logo-box{width:60px;height:60px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
 .hero-logo-box img{width:60px;height:60px;object-fit:contain;}
 .hero-num{font-size:26px;font-weight:800;color:var(--accent2);}
-.hero-name{font-size:14px;color:var(--text);}
+.hero-name{font-size:14px;}
 .hero-loc{font-size:12px;color:var(--text2);}
 .info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
 .info-row:last-child{border-bottom:none;}
@@ -103,7 +102,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .checklist-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
 .checklist-header h3{font-size:15px;font-weight:600;}
 .progress-badge{font-size:12px;background:var(--bg3);padding:4px 10px;border-radius:20px;color:var(--text2);}
-.check-item{display:flex;align-items:center;gap:12px;padding:11px 16px;cursor:pointer;transition:background 0.15s;border-bottom:1px solid var(--border);}
+.check-item{display:flex;align-items:center;gap:12px;padding:11px 16px;cursor:pointer;border-bottom:1px solid var(--border);}
 .check-item:last-of-type{border-bottom:none;}
 .check-item input[type=checkbox]{width:20px;height:20px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;}
 .check-item label{font-size:14px;flex:1;cursor:pointer;line-height:1.4;}
@@ -125,11 +124,11 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .alliance-section-header.pick2 h3{color:var(--accent2);}
 .alliance-section-header.avoid h3{color:var(--red);}
 .drag-list{min-height:40px;padding:4px 0;}
-.drag-item{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:grab;border-bottom:1px solid var(--border);transition:background 0.15s;user-select:none;-webkit-user-select:none;}
+.drag-item{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:grab;border-bottom:1px solid var(--border);user-select:none;-webkit-user-select:none;}
 .drag-item:last-child{border-bottom:none;}
 .drag-item.dragging{opacity:0.4;}
 .drag-item.drag-over{background:var(--card2);border-top:2px solid var(--accent);}
-.drag-handle{color:var(--text3);font-size:16px;cursor:grab;flex-shrink:0;}
+.drag-handle{color:var(--text3);font-size:16px;flex-shrink:0;}
 .drag-rank{font-size:11px;font-weight:700;color:var(--text3);min-width:18px;}
 .drag-num{font-size:14px;font-weight:700;color:var(--accent2);min-width:46px;}
 .drag-name{font-size:12px;color:var(--text2);flex:1;min-width:0;}
@@ -168,7 +167,6 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .scan-del{background:none;border:none;color:var(--text3);font-size:16px;cursor:pointer;}
 .scout-overview{padding:14px;}
 .scout-team-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:10px;cursor:pointer;}
-.scout-team-card:active{background:var(--card2);}
 .scout-team-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
 .scout-team-num{font-size:16px;font-weight:700;color:var(--accent2);}
 .scout-team-name{font-size:12px;color:var(--text2);flex:1;}
@@ -176,6 +174,44 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 .mini-stats{display:flex;gap:8px;flex-wrap:wrap;}
 .mini-stat{font-size:11px;background:var(--bg3);padding:3px 8px;border-radius:6px;color:var(--text2);}
 .mini-stat span{color:var(--text);font-weight:600;}
+/* STRATEGY */
+.strat-wrap{padding:14px;}
+.strat-match-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px;}
+.strat-match-title{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;}
+.strat-match-label{font-size:20px;font-weight:800;color:var(--text);margin-bottom:12px;}
+.strat-alliances{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.strat-alliance{border-radius:var(--radius-sm);overflow:hidden;}
+.strat-alliance-header{padding:7px 10px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
+.strat-alliance-header.red{background:rgba(239,68,68,0.2);color:#fca5a5;}
+.strat-alliance-header.blue{background:rgba(59,130,246,0.2);color:#93c5fd;}
+.strat-team-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--bg3);border:none;width:100%;text-align:left;cursor:pointer;border-bottom:1px solid var(--border);color:var(--text);}
+.strat-team-btn:last-child{border-bottom:none;}
+.strat-team-btn.us{background:rgba(139,92,246,0.15);border-left:3px solid var(--purple);}
+.strat-team-btn:active{background:var(--card2);}
+.strat-team-num{font-size:13px;font-weight:700;color:var(--accent2);}
+.strat-team-name{font-size:11px;color:var(--text2);flex:1;text-align:left;}
+.strat-scout-badge{font-size:10px;background:rgba(139,92,246,0.2);color:var(--purple);padding:2px 6px;border-radius:10px;}
+.strat-refresh{background:none;border:1px solid var(--border2);border-radius:var(--radius-sm);padding:8px 14px;color:var(--text2);font-size:12px;cursor:pointer;width:100%;}
+/* FIELD CANVAS */
+.field-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;}
+.field-toolbar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.phase-btn{padding:6px 14px;border:2px solid transparent;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;}
+.phase-btn.auto{background:rgba(16,185,129,0.15);color:var(--green);}
+.phase-btn.auto.active{background:var(--green);color:white;border-color:var(--green);}
+.phase-btn.teleop{background:rgba(59,130,246,0.15);color:var(--accent2);}
+.phase-btn.teleop.active{background:var(--accent);color:white;border-color:var(--accent);}
+.phase-btn.endgame{background:rgba(245,158,11,0.15);color:var(--amber);}
+.phase-btn.endgame.active{background:var(--amber);color:white;border-color:var(--amber);}
+.tool-sep{width:1px;height:24px;background:var(--border2);}
+.tool-btn{background:none;border:1px solid var(--border2);border-radius:var(--radius-sm);padding:6px 10px;color:var(--text2);font-size:12px;cursor:pointer;}
+.tool-btn:active{background:var(--card2);}
+.size-btn{background:none;border:1px solid var(--border2);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+#fieldCanvas{width:100%;display:block;touch-action:none;cursor:crosshair;}
+.strat-notes{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px;color:var(--text);font-size:13px;outline:none;resize:vertical;min-height:80px;font-family:inherit;}
+.strat-notes:focus{border-color:var(--accent);}
+.match-selector{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;padding-bottom:4px;}
+.match-sel-btn{flex-shrink:0;padding:6px 14px;background:var(--card);border:1px solid var(--border);border-radius:20px;color:var(--text2);font-size:12px;cursor:pointer;white-space:nowrap;}
+.match-sel-btn.active{background:var(--accent);border-color:var(--accent);color:white;}
 .loading{text-align:center;padding:40px 20px;color:var(--text3);font-size:14px;}
 .spinner{width:28px;height:28px;border:3px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 12px;}
 @keyframes spin{to{transform:rotate(360deg);}}
@@ -185,6 +221,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
 </head>
 <body>
 
+<!-- FILM -->
 <div id="page-film" class="page active">
   <div class="film-header">
     <h1>Film Review</h1>
@@ -192,14 +229,18 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
       <input id="eventCodeInput" type="text" placeholder="Event code (e.g. 2026njfla)" autocapitalize="none" autocorrect="off" spellcheck="false"/>
       <button onclick="loadEvent()">Load</button>
     </div>
-    <div id="eventBadge" style="display:none" class="event-badge">
-      <div class="event-badge-dot"></div>
-      <div class="event-badge-text" id="eventBadgeText"></div>
-    </div>
+    <div id="eventBadge" style="display:none" class="event-badge"><div class="event-badge-dot"></div><div class="event-badge-text" id="eventBadgeText"></div></div>
   </div>
   <div id="filmContent"><div class="empty" style="padding-top:40px">Enter an event code above to load teams.</div></div>
 </div>
 
+<!-- STRATEGY -->
+<div id="page-strategy" class="page">
+  <div class="page-header"><h1>Match Strategy</h1><p id="stratEventLabel">Load an event in Film Review first</p></div>
+  <div id="stratContent"><div class="empty" style="padding-top:30px">No event loaded.</div></div>
+</div>
+
+<!-- CHECKLIST -->
 <div id="page-checklist" class="page">
   <div class="page-header"><h1>Checklists</h1><p>Pre-event &amp; pre-match prep</p></div>
   <div class="sub-tabs">
@@ -210,11 +251,13 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
   <div id="checklist-match" style="display:none"></div>
 </div>
 
+<!-- ALLIANCE -->
 <div id="page-alliance" class="page">
   <div class="page-header"><h1>Alliance Selection</h1><p id="allianceEventLabel">Load an event in Film Review first</p></div>
   <div id="allianceContent"></div>
 </div>
 
+<!-- IMPORT -->
 <div id="page-scanner" class="page">
   <div class="page-header"><h1>Import Scout Data</h1><p>Paste QRScout entries from scouts</p></div>
   <div class="scanner-wrap">
@@ -229,44 +272,46 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px 
   </div>
 </div>
 
+<!-- SCOUTING -->
 <div id="page-scouting" class="page">
   <div class="page-header"><h1>Scouting Data</h1><p>All imported scout reports</p></div>
   <div id="scoutingContent"><div class="empty" style="padding-top:30px">No scouting data yet.</div></div>
 </div>
 
+<!-- TEAM DETAIL OVERLAY -->
 <div id="teamDetail">
   <div class="detail-header">
     <button class="back-btn" onclick="closeDetail()">&#8592; Back</button>
-    <div class="detail-header-info">
-      <h2 id="detailTitle">Team</h2>
-      <p id="detailSubtitle"></p>
-    </div>
+    <div class="detail-header-info"><h2 id="detailTitle">Team</h2><p id="detailSubtitle"></p></div>
   </div>
   <div class="detail-body" id="detailBody"></div>
 </div>
 
 <nav>
   <button class="nav-btn active" onclick="showPage('film',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/><path d="M8 11h8M8 15h5"/></svg>Film
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/></svg>Film
+  </button>
+  <button class="nav-btn" onclick="showPage('strategy',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 20H4a2 2 0 01-2-2V6a2 2 0 012-2h3.9a2 2 0 011.69.9l.81 1.2a2 2 0 001.67.9H20a2 2 0 012 2v2"/><path d="M12 13v9"/><path d="M16 17l-4-4-4 4"/></svg>Strategy
   </button>
   <button class="nav-btn" onclick="showPage('checklist',this)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Checklist
   </button>
   <button class="nav-btn" onclick="showPage('alliance',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 3.13a4 4 0 010 7.75"/><path d="M21 21v-2a4 4 0 00-3-3.87"/></svg>Alliance
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>Alliance
   </button>
   <button class="nav-btn" onclick="showPage('scanner',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/><rect x="7" y="7" width="4" height="4"/><rect x="13" y="7" width="4" height="4"/><rect x="7" y="13" width="4" height="4"/><path d="M13 13h4v4"/></svg>Import
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/></svg>Import
   </button>
   <button class="nav-btn" onclick="showPage('scouting',this)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>Scouting
   </button>
 </nav>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
 <script>
 const TBA_KEY='sBdj6c4Yga6cd3nQTNKa6siKfkVedQKgizLVflrPSFEqmxUgyFe9jto4jjyo2cz8';
 const TBA='https://www.thebluealliance.com/api/v3';
+const MY_TEAM=7045;
 const QR_COLS=['scouter','matchNumber','robot','teamNumber','afuel8','afuel','aclimb','Tfuel','shift','a1fuel','a1role','a2fuel','a2role','efuel','eclimb','disabled','aside','Arank','sCon','Drskill','Dskill','askill','comm'];
 
 let currentEvent=localStorage.getItem('frc_event')||'';
@@ -276,15 +321,20 @@ let pick1list=JSON.parse(localStorage.getItem('frc_pick1')||'[]');
 let pick2list=JSON.parse(localStorage.getItem('frc_pick2')||'[]');
 let avoidlist=JSON.parse(localStorage.getItem('frc_avoidlist')||'[]');
 let scoutData=JSON.parse(localStorage.getItem('frc_scoutdata')||'[]');
+let stratMatches=[];
+let currentStratMatch=null;
 
-// migrate old picklist key
+// Drawing state
+let isDrawing=false;
+let currentPhase='auto';
+let drawHistory={};// matchKey -> [{phase,paths}]
+let currentPaths=[];
+let currentPath=[];
+const PHASE_COLORS={auto:'#10b981',teleop:'#3b82f6',endgame:'#f59e0b'};
+const STROKE_WIDTH=3;
+
 if(!pick1list.length){const old=JSON.parse(localStorage.getItem('frc_picklist')||'[]');if(old.length){pick1list=old;saveLists();}}
-
-function saveLists(){
-  localStorage.setItem('frc_pick1',JSON.stringify(pick1list));
-  localStorage.setItem('frc_pick2',JSON.stringify(pick2list));
-  localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));
-}
+function saveLists(){localStorage.setItem('frc_pick1',JSON.stringify(pick1list));localStorage.setItem('frc_pick2',JSON.stringify(pick2list));localStorage.setItem('frc_avoidlist',JSON.stringify(avoidlist));}
 
 const DEFAULT_EVENT=['Bumpers (both sets)','Battery x3 minimum','Battery charger','Tool bag (allen keys, screwdrivers, pliers)','Laptop + charger','Driver station cable','Spare motors (Falcon, NEO)','Gearbox spare parts','Zip ties + velcro','Electrical spare (breakers, wire)','Pit banner + table cloth','Team shirts / buttons','Safety glasses x5','Radio + OM5P','Pneumatics kit (if applicable)','3D printer filament spares','Competition manual printout','Team registration docs'];
 const DEFAULT_MATCH=['Robot powered on','Battery fully charged + secured','Bumpers on and tight','All mechanisms move freely','Radio light solid green','Driver station connected','Autonomous selected','Alliance partners confirmed','Tablet / scouting ready','Strategy review done'];
@@ -300,6 +350,7 @@ function showPage(name,btn){
   if(name==='alliance')renderAlliance();
   if(name==='scouting')renderScoutingOverview();
   if(name==='scanner')renderRecentScans();
+  if(name==='strategy')renderStrategy();
 }
 
 function teamLogoHTML(teamKey,teamNum,size=48){
@@ -312,6 +363,8 @@ function tryNextLogo(img,teamKey,teamNum,size,step){
   if(step<fb.length&&fb[step-1]){img.onerror=()=>tryNextLogo(img,teamKey,teamNum,size,step+1);img.src=fb[step-1];}
   else{img.parentNode.innerHTML=`<div class="team-logo-fallback" style="font-size:${size>50?14:11}px;color:var(--accent2);font-weight:700;width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center">${teamNum}</div>`;}
 }
+
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/'/g,"&#39;").replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 async function loadEvent(){
   const code=document.getElementById('eventCodeInput').value.trim().toLowerCase();
@@ -326,6 +379,7 @@ async function loadEvent(){
     const eName=eventInfo.name||code;
     document.getElementById('eventBadgeText').textContent=eName;document.getElementById('eventBadge').style.display='flex';
     document.getElementById('allianceEventLabel').textContent=eName;
+    document.getElementById('stratEventLabel').textContent=eName;
     renderTeamGrid();
   }catch(e){document.getElementById('filmContent').innerHTML='<div class="error-msg">Failed to load event.</div>';}
 }
@@ -350,8 +404,239 @@ function renderTeamGrid(){
   document.getElementById('filmContent').innerHTML=html;
 }
 
-function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/'/g,"&#39;").replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+// ── STRATEGY ──
+async function renderStrategy(){
+  if(!currentEvent){document.getElementById('stratContent').innerHTML='<div class="empty" style="padding-top:30px">No event loaded. Load an event in Film Review first.</div>';return;}
+  document.getElementById('stratContent').innerHTML='<div class="loading"><div class="spinner"></div>Loading matches...</div>';
+  try{
+    const matches=await tbaFetch('/team/frc'+MY_TEAM+'/event/'+currentEvent+'/matches');
+    if(!Array.isArray(matches)||matches.length===0){document.getElementById('stratContent').innerHTML='<div class="empty" style="padding-top:30px">No matches found for Team '+MY_TEAM+'.</div>';return;}
+    const lo={qm:0,ef:1,qf:2,sf:3,f:4};
+    stratMatches=matches.sort((a,b)=>{const d=(lo[a.comp_level]??0)-(lo[b.comp_level]??0);if(d)return d;const s=(a.set_number||0)-(b.set_number||0);if(s)return s;return(a.match_number||0)-(b.match_number||0);});
+    // Auto-select next unplayed or last played
+    const unplayed=stratMatches.find(m=>m.alliances?.red?.score===-1||m.alliances?.blue?.score===-1||(m.alliances?.red?.score===null&&m.alliances?.blue?.score===null));
+    currentStratMatch=unplayed||stratMatches[stratMatches.length-1];
+    buildStratPage();
+  }catch(e){document.getElementById('stratContent').innerHTML='<div class="error-msg">Failed to load matches.</div>';}
+}
 
+function buildStratPage(){
+  if(!stratMatches.length)return;
+  const matchKey=currentStratMatch.key;
+  // Load saved drawing
+  const saved=JSON.parse(localStorage.getItem('frc_draw_'+matchKey)||'[]');
+  currentPaths=saved;
+
+  // Match selector
+  let selector='<div class="match-selector">';
+  for(const m of stratMatches){
+    const lbl=m.comp_level==='qm'?'Q'+m.match_number:m.comp_level.toUpperCase()+m.set_number+'M'+m.match_number;
+    const played=(m.alliances?.red?.score>=0||m.alliances?.blue?.score>=0);
+    selector+=`<button class="match-sel-btn ${m.key===matchKey?'active':''}" onclick="selectStratMatch('${m.key}')">${lbl}${played?'✓':''}</button>`;
+  }
+  selector+='</div>';
+
+  // Alliance info
+  const red=currentStratMatch.alliances?.red?.team_keys||[];
+  const blue=currentStratMatch.alliances?.blue?.team_keys||[];
+  const myTeamKey='frc'+MY_TEAM;
+  const onRed=red.includes(myTeamKey);
+  const onBlue=blue.includes(myTeamKey);
+  const myStation=onRed?'Red':onBlue?'Blue':'Unknown';
+  const stationNum=onRed?red.indexOf(myTeamKey)+1:onBlue?blue.indexOf(myTeamKey)+1:'?';
+
+  function teamBtn(tk,side){
+    const num=parseInt(tk.replace('frc',''));
+    const t=eventTeams.find(x=>x.team_number===num)||{key:tk,team_number:num,nickname:''};
+    const isUs=tk===myTeamKey;
+    const hasScout=scoutData.some(x=>String(x.teamNumber)===String(num));
+    return `<button class="strat-team-btn ${isUs?'us':''}" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')">
+      ${teamLogoHTML(t.key,t.team_number,28)}
+      <span class="strat-team-num">${num}</span>
+      <span class="strat-team-name">${esc(t.nickname||'')}${isUs?' (US)':''}</span>
+      ${hasScout?'<span class="strat-scout-badge">Scout</span>':''}
+    </button>`;
+  }
+
+  const matchLabel=currentStratMatch.comp_level==='qm'?'Qual '+currentStratMatch.match_number:(currentStratMatch.comp_level.toUpperCase()+' '+currentStratMatch.set_number+' Match '+currentStratMatch.match_number);
+  const savedNotes=localStorage.getItem('frc_notes_'+matchKey)||'';
+
+  document.getElementById('stratContent').innerHTML=`<div class="strat-wrap">
+    ${selector}
+    <div class="strat-match-card">
+      <div class="strat-match-title">Next Match</div>
+      <div class="strat-match-label">${matchLabel} &nbsp;<span style="font-size:13px;font-weight:500;color:var(--${myStation==='Red'?'red':'accent2'})">${myStation} ${stationNum}</span></div>
+      <div class="strat-alliances">
+        <div class="strat-alliance">
+          <div class="strat-alliance-header red">&#128308; Red Alliance</div>
+          ${red.map(tk=>teamBtn(tk,'red')).join('')}
+        </div>
+        <div class="strat-alliance">
+          <div class="strat-alliance-header blue">&#128309; Blue Alliance</div>
+          ${blue.map(tk=>teamBtn(tk,'blue')).join('')}
+        </div>
+      </div>
+      <button class="strat-refresh" onclick="renderStrategy()">&#8635; Refresh Matches</button>
+    </div>
+    <div class="field-wrap">
+      <div class="field-toolbar">
+        <button class="phase-btn auto ${currentPhase==='auto'?'active':''}" onclick="setPhase('auto',this)">Auto</button>
+        <button class="phase-btn teleop ${currentPhase==='teleop'?'active':''}" onclick="setPhase('teleop',this)">Teleop</button>
+        <button class="phase-btn endgame ${currentPhase==='endgame'?'active':''}" onclick="setPhase('endgame',this)">Endgame</button>
+        <div class="tool-sep"></div>
+        <button class="tool-btn" onclick="undoStroke()">&#8592; Undo</button>
+        <button class="tool-btn" onclick="clearCanvas()">&#10005; Clear</button>
+      </div>
+      <canvas id="fieldCanvas"></canvas>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;">
+      <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px">Match Notes</div>
+      <textarea class="strat-notes" id="stratNotes" placeholder="Strategy notes for this match..." onchange="saveNotes()">${esc(savedNotes)}</textarea>
+    </div>
+  </div>`;
+
+  initCanvas();
+}
+
+function selectStratMatch(key){
+  // Save current drawing before switching
+  if(currentStratMatch)saveDrawing(currentStratMatch.key);
+  currentStratMatch=stratMatches.find(m=>m.key===key);
+  buildStratPage();
+}
+
+// ── CANVAS ──
+function initCanvas(){
+  const canvas=document.getElementById('fieldCanvas');
+  if(!canvas)return;
+  const wrap=canvas.parentElement;
+  const w=wrap.clientWidth;
+  const h=Math.round(w*0.415); // match image aspect ratio 1054x415
+  canvas.width=w;canvas.height=h;
+  loadFieldImage(()=>{
+    drawField();
+    redrawPaths();
+  });
+  canvas.addEventListener('pointerdown',onPointerDown,{passive:false});
+  canvas.addEventListener('pointermove',onPointerMove,{passive:false});
+  canvas.addEventListener('pointerup',onPointerUp);
+  canvas.addEventListener('pointercancel',onPointerUp);
+}
+
+let fieldImg=null;
+function loadFieldImage(cb){
+  if(fieldImg){cb();return;}
+  const img=new Image();
+  img.onload=()=>{fieldImg=img;cb();};
+  img.onerror=()=>{fieldImg=null;cb();};
+  img.src='field.png';
+}
+
+function drawField(){
+  const canvas=document.getElementById('fieldCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const w=canvas.width,h=canvas.height;
+  if(fieldImg){
+    ctx.drawImage(fieldImg,0,0,w,h);
+  }else{
+    // Fallback if field.png not found
+    ctx.fillStyle='#1a2a1a';ctx.fillRect(0,0,w,h);
+    ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=3;ctx.strokeRect(4,4,w-8,h-8);
+    ctx.strokeStyle='rgba(255,255,255,0.15)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(w/2,4);ctx.lineTo(w/2,h-4);ctx.stroke();
+    ctx.fillStyle='rgba(239,68,68,0.06)';ctx.fillRect(4,4,w/2-4,h-8);
+    ctx.fillStyle='rgba(59,130,246,0.06)';ctx.fillRect(w/2,4,w/2-4,h-8);
+    ctx.fillStyle='rgba(255,255,255,0.2)';ctx.font=`bold ${Math.round(h*0.07)}px system-ui`;ctx.textAlign='center';
+    ctx.fillText('RED',w*0.25,h*0.52);ctx.fillText('BLUE',w*0.75,h*0.52);
+  }
+}
+
+function redrawPaths(){
+  const canvas=document.getElementById('fieldCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  drawField();
+  for(const p of currentPaths){
+    if(!p.points||p.points.length<2)continue;
+    ctx.beginPath();
+    ctx.strokeStyle=PHASE_COLORS[p.phase]||'#fff';
+    ctx.lineWidth=STROKE_WIDTH;
+    ctx.lineCap='round';
+    ctx.lineJoin='round';
+    ctx.moveTo(p.points[0].x,p.points[0].y);
+    for(let i=1;i<p.points.length;i++)ctx.lineTo(p.points[i].x,p.points[i].y);
+    ctx.stroke();
+  }
+}
+
+function getCanvasPos(e){
+  const canvas=document.getElementById('fieldCanvas');
+  const rect=canvas.getBoundingClientRect();
+  const scaleX=canvas.width/rect.width;
+  const scaleY=canvas.height/rect.height;
+  return{x:(e.clientX-rect.left)*scaleX,y:(e.clientY-rect.top)*scaleY};
+}
+
+function onPointerDown(e){
+  e.preventDefault();
+  isDrawing=true;
+  currentPath=[getCanvasPos(e)];
+}
+function onPointerMove(e){
+  e.preventDefault();
+  if(!isDrawing)return;
+  const pos=getCanvasPos(e);
+  currentPath.push(pos);
+  // Live draw
+  const canvas=document.getElementById('fieldCanvas');
+  const ctx=canvas.getContext('2d');
+  if(currentPath.length>=2){
+    ctx.beginPath();
+    ctx.strokeStyle=PHASE_COLORS[currentPhase];
+    ctx.lineWidth=STROKE_WIDTH;
+    ctx.lineCap='round';
+    ctx.lineJoin='round';
+    const pts=currentPath;
+    ctx.moveTo(pts[pts.length-2].x,pts[pts.length-2].y);
+    ctx.lineTo(pts[pts.length-1].x,pts[pts.length-1].y);
+    ctx.stroke();
+  }
+}
+function onPointerUp(e){
+  if(!isDrawing)return;
+  isDrawing=false;
+  if(currentPath.length>1){
+    currentPaths.push({phase:currentPhase,points:currentPath});
+    saveDrawing(currentStratMatch.key);
+  }
+  currentPath=[];
+}
+
+function saveDrawing(matchKey){
+  localStorage.setItem('frc_draw_'+matchKey,JSON.stringify(currentPaths));
+}
+function undoStroke(){
+  if(!currentPaths.length)return;
+  currentPaths.pop();
+  if(currentStratMatch)saveDrawing(currentStratMatch.key);
+  redrawPaths();
+}
+function clearCanvas(){
+  currentPaths=[];
+  if(currentStratMatch)saveDrawing(currentStratMatch.key);
+  redrawPaths();
+}
+function setPhase(phase,btn){
+  currentPhase=phase;
+  document.querySelectorAll('.phase-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function saveNotes(){
+  const notes=document.getElementById('stratNotes').value;
+  if(currentStratMatch)localStorage.setItem('frc_notes_'+currentStratMatch.key,notes);
+}
+
+// ── TEAM DETAIL ──
 async function openTeam(teamKey,num,name){
   const el=document.getElementById('teamDetail');
   el.style.display='block';el.scrollTop=0;
@@ -368,17 +653,17 @@ async function openTeam(teamKey,num,name){
     const oprs=currentEvent?results[4]:null;
     let rank=null,record=null;
     if(rankings&&rankings.rankings){const r=rankings.rankings.find(x=>x.team_key===teamKey);if(r){rank=r.rank;record=r.record;}}
-    let oprVal=null,dprVal=null,ccwmVal=null;
-    if(oprs&&oprs.oprs){oprVal=oprs.oprs[teamKey];dprVal=oprs.dprs?.[teamKey];ccwmVal=oprs.ccwms?.[teamKey];}
+    let opr=null,dpr=null,ccwm=null;
+    if(oprs&&oprs.oprs){opr=oprs.oprs[teamKey];dpr=oprs.dprs?.[teamKey];ccwm=oprs.ccwms?.[teamKey];}
     const lo={qm:0,ef:1,qf:2,sf:3,f:4};
     const sorted=(Array.isArray(matches)?matches:[]).sort((a,b)=>{const d=(lo[a.comp_level]??0)-(lo[b.comp_level]??0);if(d)return d;const s=(a.set_number||0)-(b.set_number||0);if(s)return s;return(a.match_number||0)-(b.match_number||0);});
-    let vKey=null,vMatchKey=null;
-    for(let i=sorted.length-1;i>=0;i--){const m=sorted[i];if(m.videos){const yt=m.videos.find(v=>v.type==='youtube');if(yt){vKey=yt.key;vMatchKey=m.key;break;}}}
-    renderTeamDetail(info,sorted,teamKey,num,rank,record,oprVal,dprVal,ccwmVal,vKey,vMatchKey,awards);
-  }catch(e){document.getElementById('detailBody').innerHTML='<div class="error-msg">Failed to load team data.</div>';}
+    let vKey=null;
+    for(let i=sorted.length-1;i>=0;i--){const m=sorted[i];if(m.videos){const yt=m.videos.find(v=>v.type==='youtube');if(yt){vKey=yt.key;break;}}}
+    renderTeamDetail(info,sorted,teamKey,num,rank,record,opr,dpr,ccwm,vKey,awards);
+  }catch(e){document.getElementById('detailBody').innerHTML='<div class="error-msg">Failed to load.</div>';}
 }
 
-function renderTeamDetail(info,matches,teamKey,num,rank,record,opr,dpr,ccwm,videoKey,videoMatchKey,awards){
+function renderTeamDetail(info,matches,teamKey,num,rank,record,opr,dpr,ccwm,videoKey,awards){
   const wins=record?.wins??'—',losses=record?.losses??'—',ties=record?.ties??'—';
   const winRate=(record&&(record.wins+record.losses+record.ties)>0)?((record.wins/(record.wins+record.losses+record.ties))*100).toFixed(1)+'%':'—';
   const videoHTML=videoKey?buildVideoThumb(videoKey):`<div class="video-container"><div class="video-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>No match video yet</div></div>`;
@@ -399,7 +684,6 @@ function renderTeamDetail(info,matches,teamKey,num,rank,record,opr,dpr,ccwm,vide
     </div>`;
   }
   const teamScouts=scoutData.filter(x=>String(x.teamNumber)===String(num));
-  const scoutHTML=renderScoutPanel(teamScouts,num);
   document.getElementById('detailBody').innerHTML=`
     <div class="detail-tabs">
       <div class="detail-tab active" onclick="switchDetailTab('tba',this)">TBA Stats</div>
@@ -424,7 +708,7 @@ function renderTeamDetail(info,matches,teamKey,num,rank,record,opr,dpr,ccwm,vide
       <div class="section-title">Match History</div>
       <div class="match-list">${matchRows||'<div class="empty">No matches yet.</div>'}</div>
     </div>
-    <div id="dtab-scout" style="display:none">${scoutHTML}</div>`;
+    <div id="dtab-scout" style="display:none">${renderScoutPanel(teamScouts,num)}</div>`;
 }
 
 function switchDetailTab(tab,btn){
@@ -433,19 +717,14 @@ function switchDetailTab(tab,btn){
   document.getElementById('dtab-tba').style.display=tab==='tba'?'block':'none';
   document.getElementById('dtab-scout').style.display=tab==='scout'?'block':'none';
 }
-
 function buildVideoThumb(ytKey){
   const thumb=`https://img.youtube.com/vi/${ytKey}/hqdefault.jpg`;
-  const ytUrl=`https://www.youtube.com/watch?v=${ytKey}&autoplay=1`;
-  return `<div class="video-container" id="videoBox" style="cursor:pointer;position:relative;" onclick="window.open('${ytUrl}','_blank')">
+  return `<div class="video-container" id="videoBox" style="cursor:pointer;position:relative;" onclick="window.open('https://www.youtube.com/watch?v=${ytKey}&autoplay=1','_blank')">
     <img src="${thumb}" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);">
-      <div style="width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="9,7 19,12 9,17"/></svg></div>
-    </div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);"><div style="width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="9,7 19,12 9,17"/></svg></div></div>
     <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);padding:7px 12px;font-size:12px;color:white;">Tap to open in YouTube</div>
   </div>`;
 }
-
 function playVideo(ytKey,row){
   document.querySelectorAll('.match-row').forEach(r=>r.classList.remove('active'));
   row.classList.add('active');
@@ -455,237 +734,54 @@ function playVideo(ytKey,row){
 function closeDetail(){document.getElementById('teamDetail').style.display='none';}
 
 // ── ALLIANCE ──
-// Drag state
-let dragSrc=null,dragList=null;
-
-function getLastComment(teamKey){
-  const tn=eventTeams.find(t=>t.key===teamKey)?.team_number;
-  if(!tn)return'';
-  const entries=scoutData.filter(x=>String(x.teamNumber)===String(tn));
-  if(!entries.length)return'';
-  const last=[...entries].sort((a,b)=>b.matchNumber-a.matchNumber)[0];
-  return last.comm||'';
-}
-
+let dragSrc=null;
+function getLastComment(teamKey){const tn=eventTeams.find(t=>t.key===teamKey)?.team_number;if(!tn)return'';const entries=scoutData.filter(x=>String(x.teamNumber)===String(tn));if(!entries.length)return'';return([...entries].sort((a,b)=>b.matchNumber-a.matchNumber)[0].comm||'');}
 function renderAllianceList(listId,items,headerClass,title){
-  const comment_snippets=items.map(tk=>getLastComment(tk));
-  let rows=items.map((tk,i)=>{
-    const t=eventTeams.find(x=>x.key===tk)||{key:tk,team_number:tk,nickname:''};
-    const comm=comment_snippets[i];
-    return `<div class="drag-item" draggable="true"
-      ondragstart="onDragStart(event,'${listId}',${i})"
-      ondragover="onDragOver(event)"
-      ondragenter="onDragEnter(event)"
-      ondragleave="onDragLeave(event)"
-      ondrop="onDrop(event,'${listId}',${i})"
-      ondragend="onDragEnd(event)">
-      <span class="drag-handle">&#8597;</span>
-      <span class="drag-rank">${i+1}</span>
-      <span class="drag-num">${t.team_number}</span>
-      <span class="drag-name">${esc(t.nickname||'')}</span>
+  let rows=items.map((tk,i)=>{const t=eventTeams.find(x=>x.key===tk)||{key:tk,team_number:tk,nickname:''};const comm=getLastComment(tk);
+    return `<div class="drag-item" draggable="true" ondragstart="onDragStart(event,'${listId}',${i})" ondragover="onDragOver(event)" ondragenter="onDragEnter(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event,'${listId}',${i})" ondragend="onDragEnd(event)">
+      <span class="drag-handle">&#8597;</span><span class="drag-rank">${i+1}</span><span class="drag-num">${t.team_number}</span><span class="drag-name">${esc(t.nickname||'')}</span>
       ${comm?`<span class="drag-comment" title="${esc(comm)}">${esc(comm)}</span>`:''}
-      <div class="drag-actions">
-        <button class="drag-view" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')">View</button>
-        <button class="drag-remove" onclick="removeFromList('${listId}','${tk}')">&#10005;</button>
-      </div>
-    </div>`;
-  }).join('');
-  return `<div class="alliance-section">
-    <div class="alliance-section-header ${headerClass}"><h3>${title}</h3><span style="font-size:11px;color:var(--text3)">${items.length} teams</span></div>
-    <div class="drag-list" id="draglist-${listId}" ondragover="event.preventDefault()" ondrop="onDropEmpty(event,'${listId}')">${rows||'<div class="empty-list">None added</div>'}</div>
-  </div>`;
+      <div class="drag-actions"><button class="drag-view" onclick="openTeam('${t.key}','${t.team_number}','${esc(t.nickname||'')}')">View</button><button class="drag-remove" onclick="removeFromList('${listId}','${tk}')">&#10005;</button></div>
+    </div>`;}).join('');
+  return `<div class="alliance-section"><div class="alliance-section-header ${headerClass}"><h3>${title}</h3><span style="font-size:11px;color:var(--text3)">${items.length} teams</span></div><div class="drag-list" id="draglist-${listId}" ondragover="event.preventDefault()" ondrop="onDropEmpty(event,'${listId}')">${rows||'<div class="empty-list">None added</div>'}</div></div>`;
 }
-
 function renderAlliance(){
-  if(!eventTeams.length){document.getElementById('allianceContent').innerHTML='<div class="empty" style="padding-top:30px">No event loaded. Load an event in Film Review first.</div>';return;}
-  let allTeams=eventTeams.map(t=>{
-    const inP1=pick1list.includes(t.key),inP2=pick2list.includes(t.key),inAv=avoidlist.includes(t.key);
-    const comm=getLastComment(t.key);
-    return `<div class="all-team-row">
-      <span class="ath-num">${t.team_number}</span>
-      <span class="ath-name">${esc(t.nickname)}</span>
-      ${comm?`<span class="ath-comment" title="${esc(comm)}">${esc(comm)}</span>`:''}
-      <div class="all-team-actions">
-        <button class="add-p1" onclick="addToList('pick1','${t.key}')" ${inP1?'disabled style="opacity:0.3"':''}>P1</button>
-        <button class="add-p2" onclick="addToList('pick2','${t.key}')" ${inP2?'disabled style="opacity:0.3"':''}>P2</button>
-        <button class="add-av" onclick="addToList('avoid','${t.key}')" ${inAv?'disabled style="opacity:0.3"':''}>Avoid</button>
-      </div>
-    </div>`;
-  }).join('');
-
+  if(!eventTeams.length){document.getElementById('allianceContent').innerHTML='<div class="empty" style="padding-top:30px">No event loaded.</div>';return;}
+  let allTeams=eventTeams.map(t=>{const inP1=pick1list.includes(t.key),inP2=pick2list.includes(t.key),inAv=avoidlist.includes(t.key);const comm=getLastComment(t.key);
+    return `<div class="all-team-row"><span class="ath-num">${t.team_number}</span><span class="ath-name">${esc(t.nickname)}</span>${comm?`<span class="ath-comment" title="${esc(comm)}">${esc(comm)}</span>`:''}
+      <div class="all-team-actions"><button class="add-p1" onclick="addToList('pick1','${t.key}')" ${inP1?'disabled style="opacity:0.3"':''}>P1</button><button class="add-p2" onclick="addToList('pick2','${t.key}')" ${inP2?'disabled style="opacity:0.3"':''}>P2</button><button class="add-av" onclick="addToList('avoid','${t.key}')" ${inAv?'disabled style="opacity:0.3"':''}>Avoid</button></div>
+    </div>`;}).join('');
   document.getElementById('allianceContent').innerHTML=`<div class="alliance-wrap">
     ${renderAllianceList('pick1',pick1list,'pick1','&#9733; Round 1 Picks')}
     ${renderAllianceList('pick2',pick2list,'pick2','&#9734; Round 2 Picks')}
     ${renderAllianceList('avoid',avoidlist,'avoid','&#9888; Avoid')}
-    <div class="all-teams-section">
-      <div class="all-teams-title">All Teams</div>
-      ${allTeams}
-    </div>
+    <div class="all-teams-section"><div class="all-teams-title">All Teams</div>${allTeams}</div>
   </div>`;
 }
-
-function addToList(list,teamKey){
-  if(list==='pick1'&&!pick1list.includes(teamKey))pick1list.push(teamKey);
-  else if(list==='pick2'&&!pick2list.includes(teamKey))pick2list.push(teamKey);
-  else if(list==='avoid'&&!avoidlist.includes(teamKey))avoidlist.push(teamKey);
-  saveLists();renderAlliance();
-}
-function removeFromList(list,teamKey){
-  if(list==='pick1')pick1list=pick1list.filter(k=>k!==teamKey);
-  else if(list==='pick2')pick2list=pick2list.filter(k=>k!==teamKey);
-  else if(list==='avoid')avoidlist=avoidlist.filter(k=>k!==teamKey);
-  saveLists();renderAlliance();
-}
-
+function addToList(list,teamKey){if(list==='pick1'&&!pick1list.includes(teamKey))pick1list.push(teamKey);else if(list==='pick2'&&!pick2list.includes(teamKey))pick2list.push(teamKey);else if(list==='avoid'&&!avoidlist.includes(teamKey))avoidlist.push(teamKey);saveLists();renderAlliance();}
+function removeFromList(list,teamKey){if(list==='pick1')pick1list=pick1list.filter(k=>k!==teamKey);else if(list==='pick2')pick2list=pick2list.filter(k=>k!==teamKey);else if(list==='avoid')avoidlist=avoidlist.filter(k=>k!==teamKey);saveLists();renderAlliance();}
 function getList(id){return id==='pick1'?pick1list:id==='pick2'?pick2list:avoidlist;}
 function setList(id,arr){if(id==='pick1')pick1list=arr;else if(id==='pick2')pick2list=arr;else avoidlist=arr;}
-
-function onDragStart(e,listId,idx){
-  dragSrc={listId,idx};
-  e.dataTransfer.effectAllowed='move';
-  e.currentTarget.classList.add('dragging');
-}
+function onDragStart(e,listId,idx){dragSrc={listId,idx};e.dataTransfer.effectAllowed='move';e.currentTarget.classList.add('dragging');}
 function onDragOver(e){e.preventDefault();e.dataTransfer.dropEffect='move';}
 function onDragEnter(e){e.currentTarget.classList.add('drag-over');}
 function onDragLeave(e){e.currentTarget.classList.remove('drag-over');}
 function onDragEnd(e){e.currentTarget.classList.remove('dragging');document.querySelectorAll('.drag-over').forEach(el=>el.classList.remove('drag-over'));}
-function onDrop(e,listId,toIdx){
-  e.preventDefault();
-  e.currentTarget.classList.remove('drag-over');
-  if(!dragSrc)return;
-  const fromList=getList(dragSrc.listId);
-  const toList=getList(listId);
-  const item=fromList[dragSrc.idx];
-  if(!item)return;
-  if(dragSrc.listId===listId){
-    fromList.splice(dragSrc.idx,1);
-    fromList.splice(toIdx,0,item);
-    setList(listId,fromList);
-  }else{
-    fromList.splice(dragSrc.idx,1);
-    setList(dragSrc.listId,fromList);
-    toList.splice(toIdx,0,item);
-    setList(listId,toList);
-  }
-  dragSrc=null;saveLists();renderAlliance();
-}
-function onDropEmpty(e,listId){
-  e.preventDefault();
-  if(!dragSrc||dragSrc.listId===listId)return;
-  const fromList=getList(dragSrc.listId);
-  const toList=getList(listId);
-  const item=fromList.splice(dragSrc.idx,1)[0];
-  if(!toList.includes(item))toList.push(item);
-  setList(dragSrc.listId,fromList);setList(listId,toList);
-  dragSrc=null;saveLists();renderAlliance();
-}
+function onDrop(e,listId,toIdx){e.preventDefault();e.currentTarget.classList.remove('drag-over');if(!dragSrc)return;const fromList=getList(dragSrc.listId);const toList=getList(listId);const item=fromList[dragSrc.idx];if(!item)return;if(dragSrc.listId===listId){fromList.splice(dragSrc.idx,1);fromList.splice(toIdx,0,item);setList(listId,fromList);}else{fromList.splice(dragSrc.idx,1);setList(dragSrc.listId,fromList);toList.splice(toIdx,0,item);setList(listId,toList);}dragSrc=null;saveLists();renderAlliance();}
+function onDropEmpty(e,listId){e.preventDefault();if(!dragSrc||dragSrc.listId===listId)return;const fromList=getList(dragSrc.listId);const toList=getList(listId);const item=fromList.splice(dragSrc.idx,1)[0];if(!toList.includes(item))toList.push(item);setList(dragSrc.listId,fromList);setList(listId,toList);dragSrc=null;saveLists();renderAlliance();}
 
 // ── SCOUT DATA ──
-function parseQRScout(raw){
-  const parts=raw.trim().split('\t');
-  if(parts.length<4)return null;
-  const obj={};
-  QR_COLS.forEach((col,i)=>{obj[col]=parts[i]!==undefined?parts[i].trim():'';});
-  if(!obj.teamNumber||isNaN(parseInt(obj.teamNumber)))return null;
-  obj.teamNumber=parseInt(obj.teamNumber);obj.matchNumber=parseInt(obj.matchNumber)||0;
-  obj._id=Date.now()+'_'+Math.random().toString(36).slice(2,7);obj._ts=Date.now();
-  return obj;
-}
+function parseQRScout(raw){const parts=raw.trim().split('\t');if(parts.length<4)return null;const obj={};QR_COLS.forEach((col,i)=>{obj[col]=parts[i]!==undefined?parts[i].trim():'';});if(!obj.teamNumber||isNaN(parseInt(obj.teamNumber)))return null;obj.teamNumber=parseInt(obj.teamNumber);obj.matchNumber=parseInt(obj.matchNumber)||0;obj._id=Date.now()+'_'+Math.random().toString(36).slice(2,7);obj._ts=Date.now();return obj;}
 function saveScout(entry){scoutData.push(entry);localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));}
 function deleteScout(id){scoutData=scoutData.filter(x=>x._id!==id);localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));}
-
-function importManual(){
-  const raw=document.getElementById('manualInput').value.trim();
-  if(!raw){showScanError('Paste some data first.');return;}
-  const lines=raw.split('\n').map(l=>l.trim()).filter(l=>l.length>0);
-  let imported=0,dupes=0,failed=0;
-  for(const line of lines){
-    const entry=parseQRScout(line);
-    if(!entry){failed++;continue;}
-    const dup=scoutData.find(x=>String(x.teamNumber)===String(entry.teamNumber)&&String(x.matchNumber)===String(entry.matchNumber)&&x.robot===entry.robot);
-    if(dup){dupes++;continue;}
-    saveScout(entry);imported++;
-  }
-  document.getElementById('manualInput').value='';
-  renderRecentScans();renderTeamGrid();renderScoutingOverview();
-  let msg=`Imported ${imported} entr${imported===1?'y':'ies'}`;
-  if(dupes>0)msg+=`, ${dupes} duplicate${dupes>1?'s':''} skipped`;
-  if(failed>0)msg+=`, ${failed} failed`;
-  if(imported>0)showScanSuccess(msg);else showScanError(msg);
-}
-
+function importManual(){const raw=document.getElementById('manualInput').value.trim();if(!raw){showScanError('Paste some data first.');return;}const lines=raw.split('\n').map(l=>l.trim()).filter(l=>l.length>0);let imported=0,dupes=0,failed=0;for(const line of lines){const entry=parseQRScout(line);if(!entry){failed++;continue;}const dup=scoutData.find(x=>String(x.teamNumber)===String(entry.teamNumber)&&String(x.matchNumber)===String(entry.matchNumber)&&x.robot===entry.robot);if(dup){dupes++;continue;}saveScout(entry);imported++;}document.getElementById('manualInput').value='';renderRecentScans();renderTeamGrid();renderScoutingOverview();let msg=`Imported ${imported} entr${imported===1?'y':'ies'}`;if(dupes>0)msg+=`, ${dupes} duplicate${dupes>1?'s':''} skipped`;if(failed>0)msg+=`, ${failed} failed`;if(imported>0)showScanSuccess(msg);else showScanError(msg);}
 function showScanSuccess(msg){const el=document.getElementById('scanResult');el.textContent='✓ '+msg;el.style.display='block';document.getElementById('scanError').style.display='none';setTimeout(()=>el.style.display='none',4000);}
 function showScanError(msg){const el=document.getElementById('scanError');el.textContent='✕ '+msg;el.style.display='block';document.getElementById('scanResult').style.display='none';setTimeout(()=>el.style.display='none',5000);}
-
-function renderRecentScans(){
-  const el=document.getElementById('recentScans');if(!el)return;
-  if(!scoutData.length){el.innerHTML='<div style="padding:16px;font-size:13px;color:var(--text3);text-align:center">No entries yet</div>';return;}
-  const recent=[...scoutData].sort((a,b)=>b._ts-a._ts).slice(0,30);
-  el.innerHTML=`<div class="recent-scans-header"><h3>Imported (${scoutData.length} total)</h3><button class="clear-all-btn" onclick="clearAllScouts()">Clear All</button></div>`+
-    recent.map(e=>`<div class="scan-item"><span class="scan-team">${e.teamNumber}</span><span class="scan-meta">Match ${e.matchNumber} · ${robotLabel(e.robot)} · ${e.scouter||'?'}</span><button class="scan-del" onclick="deleteScanEntry('${e._id}')">&#10005;</button></div>`).join('');
-}
+function renderRecentScans(){const el=document.getElementById('recentScans');if(!el)return;if(!scoutData.length){el.innerHTML='<div style="padding:16px;font-size:13px;color:var(--text3);text-align:center">No entries yet</div>';return;}const recent=[...scoutData].sort((a,b)=>b._ts-a._ts).slice(0,30);el.innerHTML=`<div class="recent-scans-header"><h3>Imported (${scoutData.length} total)</h3><button class="clear-all-btn" onclick="clearAllScouts()">Clear All</button></div>`+recent.map(e=>`<div class="scan-item"><span class="scan-team">${e.teamNumber}</span><span class="scan-meta">Match ${e.matchNumber} · ${robotLabel(e.robot)} · ${e.scouter||'?'}</span><button class="scan-del" onclick="deleteScanEntry('${e._id}')">&#10005;</button></div>`).join('');}
 function deleteScanEntry(id){deleteScout(id);renderRecentScans();renderTeamGrid();renderScoutingOverview();}
 function clearAllScouts(){if(confirm('Delete all scouting data?')){scoutData=[];localStorage.setItem('frc_scoutdata',JSON.stringify(scoutData));renderRecentScans();renderTeamGrid();renderScoutingOverview();}}
-
-function renderScoutingOverview(){
-  const el=document.getElementById('scoutingContent');
-  if(!scoutData.length){el.innerHTML='<div class="empty" style="padding-top:30px">No scouting data yet.</div>';return;}
-  const byTeam={};
-  for(const e of scoutData){const k=String(e.teamNumber);if(!byTeam[k])byTeam[k]=[];byTeam[k].push(e);}
-  const teams=Object.keys(byTeam).sort((a,b)=>parseInt(a)-parseInt(b));
-  let html='<div class="scout-overview">';
-  for(const tn of teams){
-    const entries=byTeam[tn];
-    const teamInfo=eventTeams.find(t=>String(t.team_number)===tn);
-    const name=teamInfo?teamInfo.nickname:'Unknown';
-    const teamKey=teamInfo?teamInfo.key:'frc'+tn;
-    html+=`<div class="scout-team-card" onclick="openTeam('${teamKey}','${tn}','${esc(name)}')">
-      <div class="scout-team-top"><span class="scout-team-num">${tn}</span><span class="scout-team-name">${esc(name)}</span><span class="scout-count">${entries.length} match${entries.length>1?'es':''}</span></div>
-      <div class="mini-stats">
-        <div class="mini-stat">Avg Fuel <span>${avg(entries,e=>totalFuel(e)).toFixed(0)}</span></div>
-        <div class="mini-stat">Climb <span>${climbSummary(entries)}</span></div>
-        <div class="mini-stat">Drive <span>${avgSkill(entries,'Drskill')}/5</span></div>
-        <div class="mini-stat">Accuracy <span>${avgAccuracy(entries)}/5</span></div>
-      </div>
-    </div>`;
-  }
-  html+='</div>';el.innerHTML=html;
-}
-
-function renderScoutPanel(entries,teamNum){
-  if(!entries.length)return`<div class="scout-empty">No scouting data for Team ${teamNum} yet.</div>`;
-  const avgF=avg(entries,e=>totalFuel(e));
-  let html=`<div class="scout-summary"><h3>Averages across ${entries.length} match${entries.length>1?'es':''}</h3>
-    <div class="scout-bar-row"><span class="scout-bar-label">Avg Total Fuel</span><div class="scout-bar-track"><div class="scout-bar-fill" style="width:${Math.min(100,(avgF/150)*100)}%"></div></div><span class="scout-bar-val">${avgF.toFixed(0)}</span></div>
-    <div class="scout-bar-row"><span class="scout-bar-label">Auto Fuel</span><div class="scout-bar-track"><div class="scout-bar-fill" style="width:${Math.min(100,(avg(entries,e=>autoFuel(e))/40)*100)}%;background:var(--green)"></div></div><span class="scout-bar-val">${avg(entries,e=>autoFuel(e)).toFixed(0)}</span></div>
-    <div style="margin-top:8px">
-      <div class="info-row"><span class="lbl">Drive Skill</span><span class="val">${avgSkill(entries,'Drskill')}/5</span></div>
-      <div class="info-row"><span class="lbl">Defense Skill</span><span class="val">${avgSkill(entries,'Dskill')}/5</span></div>
-      <div class="info-row"><span class="lbl">Accuracy</span><span class="val">${avgAccuracy(entries)}/5</span></div>
-      <div class="info-row"><span class="lbl">Best Climb</span><span class="val">${bestClimb(entries)}</span></div>
-      <div class="info-row"><span class="lbl">Disabled</span><span class="val">${entries.filter(e=>e.disabled==='true'||e.disabled===true).length}/${entries.length}</span></div>
-    </div></div>`;
-  const sorted=[...entries].sort((a,b)=>b.matchNumber-a.matchNumber);
-  for(const e of sorted){
-    const climbLabel={'0':'Failed','1':'L1','2':'L2','3':'L3','x':'No Climb'}[e.eclimb]||e.eclimb||'—';
-    html+=`<div class="scout-entry">
-      <div class="scout-entry-header"><span class="scout-entry-title">Match ${e.matchNumber} · ${robotLabel(e.robot)} · ${e.scouter||'?'}</span><button class="scout-entry-del" onclick="deleteScoutEntry('${e._id}',this)">&#10005;</button></div>
-      <div class="scout-entry-grid">
-        <div class="scout-entry-field">Auto Fuel <span>${autoFuel(e)}</span></div>
-        <div class="scout-entry-field">Total Fuel <span>${totalFuel(e)}</span></div>
-        <div class="scout-entry-field">Endgame <span>${climbLabel}</span></div>
-        <div class="scout-entry-field">Auto Climb <span>${e.aclimb==='true'||e.aclimb===true?'Yes':'No'}</span></div>
-        <div class="scout-entry-field">Drive <span>${skillLabel(e.Drskill)}</span></div>
-        <div class="scout-entry-field">Accuracy <span>${accuracyLabel(e.askill)}</span></div>
-        <div class="scout-entry-field">Role A1 <span>${roleLabel(e.a1role)}</span></div>
-        <div class="scout-entry-field">Role A2 <span>${roleLabel(e.a2role)}</span></div>
-      </div>
-      ${e.comm?`<div class="scout-comments">"${esc(e.comm)}"</div>`:''}
-    </div>`;
-  }
-  return html;
-}
-
+function renderScoutingOverview(){const el=document.getElementById('scoutingContent');if(!scoutData.length){el.innerHTML='<div class="empty" style="padding-top:30px">No scouting data yet.</div>';return;}const byTeam={};for(const e of scoutData){const k=String(e.teamNumber);if(!byTeam[k])byTeam[k]=[];byTeam[k].push(e);}const teams=Object.keys(byTeam).sort((a,b)=>parseInt(a)-parseInt(b));let html='<div class="scout-overview">';for(const tn of teams){const entries=byTeam[tn];const teamInfo=eventTeams.find(t=>String(t.team_number)===tn);const name=teamInfo?teamInfo.nickname:'Unknown';const teamKey=teamInfo?teamInfo.key:'frc'+tn;html+=`<div class="scout-team-card" onclick="openTeam('${teamKey}','${tn}','${esc(name)}')"><div class="scout-team-top"><span class="scout-team-num">${tn}</span><span class="scout-team-name">${esc(name)}</span><span class="scout-count">${entries.length} match${entries.length>1?'es':''}</span></div><div class="mini-stats"><div class="mini-stat">Avg Fuel <span>${avg(entries,e=>totalFuel(e)).toFixed(0)}</span></div><div class="mini-stat">Climb <span>${climbSummary(entries)}</span></div><div class="mini-stat">Drive <span>${avgSkill(entries,'Drskill')}/5</span></div><div class="mini-stat">Accuracy <span>${avgAccuracy(entries)}/5</span></div></div></div>`;}html+='</div>';el.innerHTML=html;}
+function renderScoutPanel(entries,teamNum){if(!entries.length)return`<div class="scout-empty">No scouting data for Team ${teamNum} yet.</div>`;const avgF=avg(entries,e=>totalFuel(e));let html=`<div class="scout-summary"><h3>Averages across ${entries.length} match${entries.length>1?'es':''}</h3><div class="scout-bar-row"><span class="scout-bar-label">Avg Total Fuel</span><div class="scout-bar-track"><div class="scout-bar-fill" style="width:${Math.min(100,(avgF/150)*100)}%"></div></div><span class="scout-bar-val">${avgF.toFixed(0)}</span></div><div class="scout-bar-row"><span class="scout-bar-label">Auto Fuel</span><div class="scout-bar-track"><div class="scout-bar-fill" style="width:${Math.min(100,(avg(entries,e=>autoFuel(e))/40)*100)}%;background:var(--green)"></div></div><span class="scout-bar-val">${avg(entries,e=>autoFuel(e)).toFixed(0)}</span></div><div style="margin-top:8px"><div class="info-row"><span class="lbl">Drive Skill</span><span class="val">${avgSkill(entries,'Drskill')}/5</span></div><div class="info-row"><span class="lbl">Defense Skill</span><span class="val">${avgSkill(entries,'Dskill')}/5</span></div><div class="info-row"><span class="lbl">Accuracy</span><span class="val">${avgAccuracy(entries)}/5</span></div><div class="info-row"><span class="lbl">Best Climb</span><span class="val">${bestClimb(entries)}</span></div><div class="info-row"><span class="lbl">Disabled</span><span class="val">${entries.filter(e=>e.disabled==='true'||e.disabled===true).length}/${entries.length}</span></div></div></div>`;const sorted=[...entries].sort((a,b)=>b.matchNumber-a.matchNumber);for(const e of sorted){const climbLabel={'0':'Failed','1':'L1','2':'L2','3':'L3','x':'No Climb'}[e.eclimb]||e.eclimb||'—';html+=`<div class="scout-entry"><div class="scout-entry-header"><span class="scout-entry-title">Match ${e.matchNumber} · ${robotLabel(e.robot)} · ${e.scouter||'?'}</span><button class="scout-entry-del" onclick="deleteScoutEntry('${e._id}',this)">&#10005;</button></div><div class="scout-entry-grid"><div class="scout-entry-field">Auto Fuel <span>${autoFuel(e)}</span></div><div class="scout-entry-field">Total Fuel <span>${totalFuel(e)}</span></div><div class="scout-entry-field">Endgame <span>${climbLabel}</span></div><div class="scout-entry-field">Auto Climb <span>${e.aclimb==='true'||e.aclimb===true?'Yes':'No'}</span></div><div class="scout-entry-field">Drive <span>${skillLabel(e.Drskill)}</span></div><div class="scout-entry-field">Accuracy <span>${accuracyLabel(e.askill)}</span></div><div class="scout-entry-field">Role A1 <span>${roleLabel(e.a1role)}</span></div><div class="scout-entry-field">Role A2 <span>${roleLabel(e.a2role)}</span></div></div>${e.comm?`<div class="scout-comments">"${esc(e.comm)}"</div>`:''}</div>`;}return html;}
 function deleteScoutEntry(id,btn){deleteScout(id);btn.closest('.scout-entry').remove();renderTeamGrid();}
 function autoFuel(e){return(parseInt(e.afuel8)||0)+(parseInt(e.afuel)||0);}
 function totalFuel(e){return autoFuel(e)+(parseInt(e.Tfuel)||0)+(parseInt(e.a1fuel)||0)+(parseInt(e.a2fuel)||0)+(parseInt(e.efuel)||0);}
@@ -704,11 +800,7 @@ function robotLabel(v){return{R1:'Red 1',R2:'Red 2',R3:'Red 3',B1:'Blue 1',B2:'B
 // ── CHECKLISTS ──
 function getChecklist(type){const k='frc_checklist_'+type;const s=localStorage.getItem(k);if(s)return JSON.parse(s);const items=(type==='event'?DEFAULT_EVENT:DEFAULT_MATCH).map((t,i)=>({id:i,text:t,checked:false}));localStorage.setItem(k,JSON.stringify(items));return items;}
 function saveChecklist(type,items){localStorage.setItem('frc_checklist_'+type,JSON.stringify(items));}
-function renderChecklist(type){
-  const items=getChecklist(type);const done=items.filter(x=>x.checked).length;
-  let rows=items.map(item=>`<div class="check-item ${item.checked?'checked':''}" id="ci-${type}-${item.id}"><input type="checkbox" id="cb-${type}-${item.id}" ${item.checked?'checked':''} onchange="toggleCheck('${type}',${item.id})"/><label for="cb-${type}-${item.id}">${esc(item.text)}</label><button class="del-btn" onclick="deleteCheck('${type}',${item.id})">&#10005;</button></div>`).join('');
-  document.getElementById('checklist-'+type).innerHTML=`<div class="checklist-section"><div class="checklist-header"><h3>${type==='event'?'Pre-Event':'Pre-Match'} Checklist</h3><span class="progress-badge" id="prog-${type}">${done}/${items.length}</span></div><div class="checklist-items">${rows}</div><div class="add-item-row"><input type="text" id="newitem-${type}" placeholder="Add item..." onkeydown="if(event.key==='Enter')addCheck('${type}')"/><button onclick="addCheck('${type}')">Add</button></div></div><button class="reset-btn" onclick="resetChecklist('${type}')">Reset All Checkboxes</button>`;
-}
+function renderChecklist(type){const items=getChecklist(type);const done=items.filter(x=>x.checked).length;let rows=items.map(item=>`<div class="check-item ${item.checked?'checked':''}" id="ci-${type}-${item.id}"><input type="checkbox" id="cb-${type}-${item.id}" ${item.checked?'checked':''} onchange="toggleCheck('${type}',${item.id})"/><label for="cb-${type}-${item.id}">${esc(item.text)}</label><button class="del-btn" onclick="deleteCheck('${type}',${item.id})">&#10005;</button></div>`).join('');document.getElementById('checklist-'+type).innerHTML=`<div class="checklist-section"><div class="checklist-header"><h3>${type==='event'?'Pre-Event':'Pre-Match'} Checklist</h3><span class="progress-badge" id="prog-${type}">${done}/${items.length}</span></div><div class="checklist-items">${rows}</div><div class="add-item-row"><input type="text" id="newitem-${type}" placeholder="Add item..." onkeydown="if(event.key==='Enter')addCheck('${type}')"/><button onclick="addCheck('${type}')">Add</button></div></div><button class="reset-btn" onclick="resetChecklist('${type}')">Reset All Checkboxes</button>`;}
 function toggleCheck(type,id){const items=getChecklist(type);const item=items.find(x=>x.id===id);if(item){item.checked=!item.checked;saveChecklist(type,items);}const row=document.getElementById('ci-'+type+'-'+id);if(row)row.classList.toggle('checked',item.checked);const prog=document.getElementById('prog-'+type);if(prog){const done=items.filter(x=>x.checked).length;prog.textContent=done+'/'+items.length;}}
 function addCheck(type){const inp=document.getElementById('newitem-'+type);const text=inp.value.trim();if(!text)return;const items=getChecklist(type);items.push({id:Date.now(),text,checked:false});saveChecklist(type,items);inp.value='';renderChecklist(type);}
 function deleteCheck(type,id){saveChecklist(type,getChecklist(type).filter(x=>x.id!==id));renderChecklist(type);}
@@ -717,7 +809,7 @@ function showChecklist(type,tab){document.querySelectorAll('.sub-tab').forEach(t
 
 // ── INIT ──
 renderChecklist('event');renderChecklist('match');
-if(currentEvent){document.getElementById('eventCodeInput').value=currentEvent;document.getElementById('eventBadgeText').textContent=currentEvent;document.getElementById('eventBadge').style.display='flex';if(eventTeams.length)renderTeamGrid();}
+if(currentEvent){document.getElementById('eventCodeInput').value=currentEvent;document.getElementById('eventBadgeText').textContent=currentEvent;document.getElementById('eventBadge').style.display='flex';document.getElementById('stratEventLabel').textContent=currentEvent;if(eventTeams.length)renderTeamGrid();}
 renderRecentScans();
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
 </script>
